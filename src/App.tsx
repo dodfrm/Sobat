@@ -1,4 +1,6 @@
-import ClickSpark from "./ClickSpark/ClickSpark";
+import AnimatedContent from "./Animations/AnimatedContent/AnimatedContent2";
+import ClickSpark from "./Animations/ClickSpark/ClickSpark";
+import FadeContent from "./Animations/FadeContent/FadeContent";
 import "./App.css";
 import FooterSection from "./Component/footer";
 import Navbar from "./Component/Navbar";
@@ -44,21 +46,39 @@ function App() {
           </h2>
         </div>
         <div id="about" className="bg-blue min-h-[100vh] p-10">
-          <h2 className="mb-16 text-center text-4xl font-bold text-gray-800"></h2>
+          <h2 className="mb-16 text-center text-4xl font-bold text-gray-800">
+            2
+          </h2>
+
+          <AnimatedContent
+            direction="horizontal"
+            reverse
+            transition={{ type: "spring", stiffness: 80, damping: 20 }}
+          >
+            <p>This content slides in from the left</p>
+          </AnimatedContent>
         </div>
         <div
           id="our-team"
           className="flex min-h-screen flex-col items-center justify-center bg-red px-10 py-20"
         >
-          <h2 className="mb-16 text-center text-4xl font-bold text-gray-800">
-            Our Team
-          </h2>
-          <p>ayo kenalan bersama tim sobat</p>
-          <OurTeam testimonials={testimonials} />;
+          <FadeContent
+            blur={true}
+            duration={1000}
+            easing="ease-in-out"
+            initialOpacity={0}
+          >
+            <h2 className="mb-16 text-center text-4xl font-bold text-gray-800">
+              Our Team
+            </h2>
+            <p>ayo kenalan bersama tim sobat</p>
+          </FadeContent>
+          <AnimatedContent direction="vertical" distance={50} delay={200} once={false}> 
+            <OurTeam testimonials={testimonials} />;
+          </AnimatedContent>
         </div>
         <FooterSection />
       </ClickSpark>
-
     </>
   );
 }

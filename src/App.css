@@ -3,6 +3,9 @@
 
 @custom-variant dark (&:is(.dark *));
 
+*{
+  scroll-behavior: smooth;
+}
 .burger-3 input {
   display: none;
 }

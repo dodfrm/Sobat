@@ -138,11 +138,12 @@ const Navbar: React.FC = () => {
             className="flex flex-shrink-0 items-center"
             style={{ scale: textScale }}
           >
+            <a href="#home">
             <img
               src="/logo.svg"
               alt="SOBUM Logo"
               className="color-white ml-2 h-14 w-auto"
-            />
+            /></a>
           </motion.div>
 
           {/* Centered Navigation - Desktop */}
