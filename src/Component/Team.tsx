@@ -42,8 +42,8 @@ export const OurTeam = ({
     return Math.floor(Math.random() * 21) - 10;
   };
   return (
-    <div className="mx-auto max-w-sm px-4 py-20 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
-      <div className="relative grid grid-cols-1 gap-20 md:grid-cols-2">
+    <div className="mx-auto max-w-sm px-4 py-5 font-sans antialiased md:max-w-4xl md:px-8 lg:px-12">
+      <div className="relative grid grid-cols-1 md:gap-20 md:grid-cols-2">
         <div>
           <div className="relative h-80 w-full">
             <AnimatePresence>
@@ -84,7 +84,7 @@ export const OurTeam = ({
                     width={500}
                     height={500}
                     draggable={false}
-                    className="h-full w-full rounded-3xl object-cover object-center"
+                    className="h-full w-full rounded-3xl object-cover object-center md:max-h-full md:max-w-full max-h-[85%] max-w-[85%] mx-auto"
                   />
                 </motion.div>
               ))}
@@ -143,16 +143,16 @@ export const OurTeam = ({
               ))}
             </motion.p>
           </motion.div>
-          <div className="flex gap-4 pt-12 md:pt-0">
+          <div className="flex gap-4 pt-8 md:pt-0">
             <button
               onClick={handlePrev}
-              className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
+              className="group/button flex h-10 w-10 md:h-8 h-10 w-10 md:w-8 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
             >
               <IconArrowLeft className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:rotate-12 dark:text-neutral-400" />
             </button>
             <button
               onClick={handleNext}
-              className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
+              className="group/button flex h-10 w-10 md:h-8 h-10 w-10 md:w-8 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
             >
               <IconArrowRight className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />
             </button>

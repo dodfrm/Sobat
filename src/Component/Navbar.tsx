@@ -16,7 +16,8 @@ type Language = "EN" | "ID" | "JP" | "CN" | "KR" | "ES";
 const navItems: NavItem[] = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
+  { label: "Take Action", href: "#action"},
+  { label: "News", href: "#news" },
   { label: "Our Team", href: "#our-team" },
   { label: "Socials", href: "#socials" },
 ];

@@ -1,19 +1,12 @@
-import { useRef, useEffect, ReactNode } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Register plugin sekali saja (bisa dipindah ke file utama)
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+import { useRef, useEffect, useState, ReactNode } from "react";
+import { useSpring, animated, SpringConfig, SpringValue, AnimatedProps } from "@react-spring/web";
 
 interface AnimatedContentProps {
   children: ReactNode;
   distance?: number;
   direction?: "vertical" | "horizontal";
   reverse?: boolean;
-  duration?: number;
-  ease?: string;
+  config?: SpringConfig;
   initialOpacity?: number;
   animateOpacity?: boolean;
   scale?: number;
@@ -21,83 +14,79 @@ interface AnimatedContentProps {
   delay?: number;
 }
 
+interface AnimationStyles {
+  transform: SpringValue<string>;
+  opacity: SpringValue<number>;
+}
+
 const AnimatedContent = ({
   children,
   distance = 100,
   direction = "vertical",
   reverse = false,
-  duration = 0.8,
-  ease = "power3.out",
+  config = { tension: 50, friction: 25 },
   initialOpacity = 0,
   animateOpacity = true,
   scale = 1,
   threshold = 0.1,
   delay = 0,
 }: AnimatedContentProps) => {
-  const elementRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<gsap.core.Timeline | null>(null);
+  const [inView, setInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const element = elementRef.current;
+    const element = ref.current;
     if (!element) return;
 
-    const axis = direction === "vertical" ? "y" : "x";
-    const startPosition = reverse ? -distance : distance;
-
-    // Bersihkan animasi sebelumnya
-    animationRef.current?.kill();
-
-    // Setup animation timeline
-    animationRef.current = gsap.timeline({
-      scrollTrigger: {
-        trigger: element,
-        start: "top bottom-=10%",
-        end: "bottom center",
-        toggleActions: "play none none none",
-        markers: false, // Untuk debugging
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          observer.unobserve(element);
+          setTimeout(() => {
+            setInView(true);
+          }, delay);
+        }
       },
-      defaults: { duration, ease },
-    });
+      { threshold }
+    );
 
-    // Initial state
-    gsap.set(element, {
-      [axis]: startPosition,
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [threshold, delay]);
+
+  const directions: Record<"vertical" | "horizontal", string> = {
+    vertical: "Y",
+    horizontal: "X",
+  };
+
+  const springProps = useSpring({
+    from: {
+      transform: `translate${directions[direction]}(${
+        reverse ? -distance : distance
+      }px) scale(${scale})`,
       opacity: animateOpacity ? initialOpacity : 1,
-      scale,
-      overwrite: "auto",
-    });
+    },
+    to: inView
+      ? {
+          transform: `translate${directions[direction]}(0px) scale(1)`,
+          opacity: 1,
+        }
+      : undefined,
+    config,
+  });
 
-    // Animation
-    animationRef.current.to(element, {
-      [axis]: 0,
-      opacity: 1,
-      scale: 1,
-      delay,
-      ease,
-    });
+ const animatedDivProps: AnimatedProps<{
+   style: AnimationStyles;
+   children?: ReactNode;
+   ref?: React.Ref<HTMLDivElement>;
+ }> = {
+   style: springProps,
+   children,
+   ref,
+ };
 
-    return () => {
-      animationRef.current?.kill();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, [
-    distance,
-    direction,
-    reverse,
-    duration,
-    ease,
-    initialOpacity,
-    animateOpacity,
-    scale,
-    threshold,
-    delay,
-  ]);
-
-  return (
-    <div ref={elementRef} style={{ willChange: "transform, opacity" }}>
-      {children}
-    </div>
-  );
+ return <animated.div {...animatedDivProps} />;
 };
 
 export default AnimatedContent;

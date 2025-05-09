@@ -1,29 +1,5 @@
-const links = [
-  { label: "Home", href: "home" },
-  { label: "About", href: "#about" },
-  { label: "Customers", href: "/" },
-  { label: "Pricing", href: "/" },
-  { label: "Our Team", href: "#our-team" },
-  { label: "Socials", href: "#socials" },
-];
 
 export default function FooterSection() {
-  const handleSmoothScroll = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
-    e.preventDefault();
-    const targetId = href.replace("#", "");
-    const targetElement = document.getElementById(targetId);
-
-    if (targetElement) {
-      window.scrollTo({
-        top: targetElement.offsetTop,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <footer id="socials" className="py-16 md:py-32">
       <div className="mx-auto max-w-5xl px-6"
@@ -43,19 +19,6 @@ export default function FooterSection() {
             className="mx-auto h-16 w-auto"
           />
         </a>
-
-        <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleSmoothScroll(e, link.href)}
-              className="text-muted-foreground hover:text-primary block duration-150"
-            >
-              <span>{link.label}</span>
-            </a>
-          ))}
-        </div>
 
         <div className="my-8 flex flex-wrap justify-center gap-6 text-sm">
           <a
