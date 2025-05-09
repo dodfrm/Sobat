@@ -20,7 +20,7 @@ const testimonials = [
       "Implementation was seamless and the results exceeded our expectations. The platform's flexibility is remarkable.",
     name: "Wilfa Afriyani",
     designation: "3SD1-222212915",
-    src: "/src/assets/wilfa.jpeg",
+    src: require("@/assets/wilfa.jpeg"),
   },
   {
     quote:
@@ -48,7 +48,7 @@ function App() {
           <h2 className="mt-20 text-center text-3xl font-bold text-black">
             Home
           </h2>
-            <img src="/src/assets/hero-icon.png" alt="penyu" />
+          <img src={require("/src/assets/hero-icon.png")} alt="penyu" />
         </div>
         <div
           id="a"
@@ -91,8 +91,8 @@ function App() {
             config={{ tension: 80, friction: 10 }}
           >
             <Compare
-              firstImage="/src/assets/before.png"
-              secondImage="/src/assets/after.png"
+              firstImage={require("@/assets/before.png")}
+              secondImage={require("@/assets/after.png")}
               firstImageClassName="object-cover object-left-top"
               secondImageClassname="object-cover object-left-top"
               className="h-[230px] w-[350px] md:h-[400px] md:w-[500px]"
