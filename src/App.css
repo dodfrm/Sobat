@@ -3,6 +3,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+.container {
+  height: 100dvh;
+}
+
 *{
   scroll-behavior: smooth;
 }
