@@ -28,9 +28,14 @@ function App() {
           </ParallaxLayer>
 
           {/* sampah */}
-          <ParallaxLayer offset={0} speed={-0.3}>
+          <ParallaxLayer offset={0} speed={0.2}>
             <div className="absolute left-4 md:left-10 bottom-1/3 md:bottom-1/2 transform translate-y-1/2 w-1/2 md:w-1/4">
               <img src="./img/13.png" alt="sampah" className="w-2/3" />
+            </div>
+          </ParallaxLayer>
+          <ParallaxLayer offset={0} speed={0.5}>
+            <div className="absolute left-4 md:hidden top-1/7 transform translate-y-1/2 w-1/2">
+              <img src="./img/sf.png" alt="sampah" className="w-2/3" />
             </div>
           </ParallaxLayer>
           <ParallaxLayer offset={0} speed={0.3}>
@@ -40,7 +45,7 @@ function App() {
           </ParallaxLayer>
 
           {/* Ikan - positioned center bottom */}
-          <ParallaxLayer offset={0} speed={0.5}>
+          <ParallaxLayer offset={0} speed={0.45}>
             <div className="absolute top-1 left-0 w-1/2 md:w-1/4">
               <img src="./img/14.png" alt="ikan" className="w-full" />
             </div>
@@ -58,7 +63,7 @@ function App() {
           </ParallaxLayer>
 
           {/* Hero Text Section */}
-          <ParallaxLayer offset={0} speed={0.2}>
+          <ParallaxLayer offset={0} speed={0.5}>
             <div className="absolute z-0 inset-0 flex flex-col items-center justify-center text-center px-4">
               <h1 className="text-blue-300 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg">
                 Selamatkan Laut Kita
