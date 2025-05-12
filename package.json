@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.2",
+    "@radix-ui/react-slot": "^1.2.2",
     "@react-spring/parallax": "^9.7.5",
     "@react-spring/web": "^9.7.5",
     "@tabler/icons-react": "^3.31.0",
@@ -21,7 +23,7 @@
     "clsx": "^2.1.1",
     "gsap": "^3.13.0",
     "lucide-react": "^0.506.0",
-    "motion": "^12.10.2",
+    "motion": "^12.10.5",
     "project": "file:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
