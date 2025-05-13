@@ -43,8 +43,8 @@ function App() {
         <div className="relative w-full">
           {/* Navbar */}
           <HeroHeader />
-          <div className="min-h-[100vh] lg:pt-19 pt-20 lg:px-10 px-3">
-            <div className="overflow-hidden relative rounded-2xl border border-black/10 lg:rounded-4xl aspect-[6/11] lg:aspect-[17/8]">
+          <div className="h-svh lg:pt-19 pt-20 lg:px-10 px-3">
+            <div className="overflow-hidden relative rounded-2xl border border-black/10 lg:rounded-4xl h-[calc(100svh-90px)]">
               <img
                 src="./img/penyu.webp"
                 alt="ocean background"
@@ -63,8 +63,11 @@ function App() {
                       Selamatkan Laut Kita, <br /> Mulai dari Sekarang.
                     </h1>
                     <p className="mt-4 text-base lg:text-lg text-white/90">
-                      Bersama <span className="text-green-500 font-semibold">Sobat Bumi</span>,
-                      kita bisa hentikan jejak plastik di samudera.
+                      Bersama{" "}
+                      <span className="text-green-500 font-semibold">
+                        Sobat Bumi
+                      </span>
+                      , kita bisa hentikan jejak plastik di samudera.
                     </p>
                   </div>
                 </FadeContent>
