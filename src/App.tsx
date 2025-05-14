@@ -46,8 +46,8 @@ function App() {
           <div className="h-svh lg:pt-19 pt-20 lg:px-10 px-3">
             <div className="overflow-hidden relative rounded-2xl border border-black/10 lg:rounded-4xl h-[calc(100svh-90px)]">
               <img
-                src="./img/penyu.webp"
-                alt="ocean background"
+                src="./img/hero.jpeg"
+                alt="hero background"
                 className="absolute inset-0 w-full h-full object-cover object-center"
               />
               <div className="relative z-10 flex items-end h-full px-4 pb-8 lg:px-12 lg:pb-16">
