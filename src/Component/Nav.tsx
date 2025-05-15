@@ -45,9 +45,9 @@ export const HeroHeader = () => {
       <nav data-state={isOpen && "active"} className="fixed z-20 w-full px-2">
         <div
           className={cn(
-            "mx-auto mt-2 max-w-6xl px-6 transition-all duration-300 lg:px-12",
+            "mx-auto mt-2 max-w-6xl px-6 transition-all duration-400 lg:px-12",
             isScrolled &&
-              "bg-background/50 max-w-4xl rounded-2xl border backdrop-blur-lg lg:px-5"
+              "bg-[#EDFFEC] max-w-4xl rounded-2xl border border-[#cbfec9] lg:px-5"
           )}
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-2">
@@ -62,7 +62,7 @@ export const HeroHeader = () => {
               </a>
 
               {/* Search (Mobile Only) */}
-              <div className="flex items-center gap-2 lg:hidden">
+              <div className="flex items-center gap-2 lg:hidden text-[#033009">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -139,7 +139,7 @@ export const HeroHeader = () => {
                   <li key={index}>
                     <a
                       href={item.href}
-                      className="text-muted-foreground hover:text-accent-foreground block duration-150"
+                      className="text-[#033009] hover:text-accent-foreground block duration-150"
                     >
                       <span>{item.name}</span>
                     </a>
@@ -151,17 +151,17 @@ export const HeroHeader = () => {
             {/* Action Buttons */}
             <div
               className={cn(
-                "bg-background hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent",
+                "text-[#033009] bg-background hidden w-full flex-wrap items-center justify-end space-y-8 rounded-3xl border p-6 shadow-2xl shadow-zinc-300/20 md:flex-nowrap lg:m-0 lg:flex lg:w-fit lg:gap-6 lg:space-y-0 lg:border-transparent lg:bg-transparent lg:p-0 lg:shadow-none dark:shadow-none dark:lg:bg-transparent",
                 isOpen && "block lg:flex"
               )}
             >
-              <div className="lg:hidden">
-                <ul className="space-y-6 text-base font-semibold">
+              <div className="lg:hidden mb-0">
+                <ul className="space-y-6 font-semibold">
                   {menuItems.map((item, index) => (
                     <li key={index}>
                       <a
                         href={item.href}
-                        className="text-muted-foreground text-center hover:text-accent-foreground block duration-150"
+                        className="text-[#033009] text-center hover:text-accent-foreground block duration-150"
                       >
                         <span>{item.name}</span>
                       </a>
@@ -170,7 +170,7 @@ export const HeroHeader = () => {
                 </ul>
               </div>
 
-              <div className="lg:flex w-full items-center space-x-4 sm:space-x-4 hidden">
+              <div className="lg:flex w-full items-center space-x-4 hidden">
                 <Button
                   variant="ghost"
                   size="sm"
