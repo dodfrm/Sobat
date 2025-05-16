@@ -350,7 +350,7 @@
   
           &:before {
             transition-delay: 0.1s * $i;
-            background-image: url('./img/action-#{$i + 1}.jpeg');
+            background-image: './img/action-#{$i + 1}.jpeg';
           }
         }
       }
