@@ -69,8 +69,19 @@ function App() {
             </div>
           </div>
 
-          {/* Section About */}
-          <div id="about" className="h-svh lg:pt-19 pt-20 lg:px-10 px-3">
+          {/* Section Action */}
+          <div id="actions" className="min-h-svh lg:pt-19 pt-20 lg:px-10 px-3">
+            <AnimatedContent direction="vertical">  
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold text-green-800">
+                Aksi Kecil, Dampak Besar untuk Planet Kita
+              </h2>
+              <p className="mt-2 text-base text-gray-700">
+                Mulailah dari hal kecil di sekitar kita untuk menciptakan dampak
+                besar bagi lingkungan.
+              </p>
+            </div>
+            </AnimatedContent>
             <ExpandableSections />
           </div>
 
@@ -97,10 +108,7 @@ function App() {
             </FadeContent>
             <AnimatedContent
               direction="vertical"
-              distance={150}
-              delay={200}
-              scale={1}
-              config={{ tension: 80, friction: 10 }}
+              distance={50}
             >
               <OurTeam testimonials={testimonials} />
             </AnimatedContent>

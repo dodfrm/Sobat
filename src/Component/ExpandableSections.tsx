@@ -69,38 +69,39 @@ export default function ExpandableSections() {
 
   const sectionData = [
     {
-      heading: "Lingkungan",
-      text: "Jaga kebersihan alam mulai dari langkah kecil seperti membuang sampah pada tempatnya.",
+      heading: "Reduce",
+      text: "Kurangi konsumsi berlebihan dengan memilih produk yang benar-benar dibutuhkan. Hindari penggunaan barang sekali pakai dan lebih utamakan barang yang tahan lama agar limbah yang dihasilkan semakin sedikit.",
     },
     {
-      heading: "Energi",
-      text: "Hemat energi di rumahmu, matikan listrik saat tidak digunakan.",
+      heading: "Recycle",
+      text: "Lakukan pemilahan sampah mulai dari rumah, seperti memisahkan plastik, kertas, kaca, dan logam. Dengan mendaur ulang, kita bisa mengurangi jumlah sampah yang dibuang ke TPA serta menghemat energi dan sumber daya alam.",
     },
     {
-      heading: "Air",
-      text: "Gunakan air secukupnya, jangan biarkan keran menyala terus-menerus.",
+      heading: "Reuse",
+      text: "Gunakan kembali barang-barang yang masih layak pakai, seperti botol minum, kantong belanja kain, atau wadah makanan. Dengan membiasakan diri untuk memakai ulang, kita dapat menekan jumlah sampah rumah tangga secara signifikan.",
     },
     {
-      heading: "Transportasi",
-      text: "Kurangi penggunaan kendaraan bermotor pribadi, pilih transportasi umum atau bersepeda.",
+      heading: "Replace",
+      text: "Gantilah kebiasaan menggunakan produk yang merusak lingkungan dengan alternatif yang lebih ramah, seperti menggunakan transportasi umum dibanding kendaraan pribadi, atau memilih produk dengan kemasan yang dapat terurai.",
     },
     {
-      heading: "Pohon",
-      text: "Menanam pohon adalah salah satu cara terbaik menyelamatkan bumi dari pemanasan global.",
+      heading: "Replant",
+      text: "Tanamlah pohon atau tumbuhan di halaman rumah, lingkungan sekolah, atau ruang terbuka hijau. Reboisasi dan penghijauan tidak hanya memperindah lingkungan, tetapi juga membantu mengurangi emisi karbon dan suhu bumi.",
     },
   ];
-  
 
   const sections = sectionData.map((item, i) => (
-    <div className="el" key={`section-${i + 1}`}>
+    <div className="el " key={`section-${i + 1}`}>
       <div className="el__overflow">
-        <div className="el__inner">
+        <div className="el__inner rounded-md">
           <div className="el__bg"></div>
           <div className="el__preview-cont">
-            <h2 className="el__heading">{item.heading}</h2>
+            <h2 className="rotate-270 lg:rotate-0 el__heading px-12 bg-[#EDFFEC] mx-4 rounded-sm flex w-full text-[#033009] items-center justify-center font-semibold">
+              {item.heading}
+            </h2>
           </div>
-          <div className="el__content">
-            <div className="el__text">{item.text}</div>
+          <div className="el__content flex flex-col items-center justify-center">
+            <div className="el__text capitalize text-3xl lg:text-4xl lg:px-12">{item.text}</div>
             <div className="el__close-btn"></div>
           </div>
         </div>

@@ -15,10 +15,8 @@ import { cn } from "@/lib/utils";
 import { Search, Globe } from "lucide-react";
 
 const menuItems = [
-  { name: "Features", href: "#link" },
-  { name: "Solution", href: "#link" },
+  { name: "Action", href: "#actions" },
   { name: "News ", href: "#link" },
-  { name: "Action", href: "#link" },
   { name: "Our Team", href: "#our-team" },
   { name: "About", href: "#about" },
 ];
