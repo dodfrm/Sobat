@@ -398,3 +398,8 @@
     }
   }
   
+  @media (max-width: 768px) {
+    .cont {
+      height: calc(70svh - 45px);
+    }
+  }

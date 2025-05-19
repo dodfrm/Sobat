@@ -40,7 +40,7 @@ export const HeroHeader = () => {
 
   return (
     <header>
-      <nav data-state={isOpen && "active"} className="fixed z-20 w-full px-2">
+      <nav data-state={isOpen && "active"} className="fixed z-99 w-full px-2">
         <div
           className={cn(
             "mx-auto mt-2 max-w-6xl px-6 transition-all duration-400 lg:px-12",
