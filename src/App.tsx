@@ -22,6 +22,7 @@ import {
   ArcElement,
 } from "chart.js";
 import { motion } from "framer-motion";
+import ScrollReveal from "./Animations/ScrollReveal/ScrollReveal";
 
 ChartJS.register(
   CategoryScale,
@@ -68,7 +69,7 @@ const testimonials = [
       "Orang Yang Suka Bermain Badminton dan Ingin Menjadi Programmer Handal Namun Enggan Ngoding",
     name: "Dodi Firmansyah",
     designation: "3SI1-222212572",
-    src: "./img/1.jpg",
+    src: "./img/dodi.jpeg",
   },
   {
     quote:
@@ -82,7 +83,7 @@ const testimonials = [
       "Lembut kayak awan, hangat kayak pelukan~ Halo, aku Titha!",
     name: "Titha Nur Izzah",
     designation: "3SI1-222212898",
-    src: "./img/3.jpg",
+    src: "./img/titha.jpeg",
   },
 ];
 
@@ -153,68 +154,93 @@ const dataTimeline = [
       <div className="space-y-6">
         <div className="flex items-start gap-4">
           <div>
-            <h3 className={typography.h3}>Carbon Emissions Surge</h3>
+            <h3 className={typography.h3}>
+              <ScrollReveal
+                wordAnimationStart="top bottom-=15%"
+                wordAnimationEnd="bottom top+=30%"
+              >
+                Carbon Emissions Surge
+              </ScrollReveal>
+            </h3>
             <p className={typography.body}>
-              Global CO₂ emissions rebounded sharply after the pandemic dip,
-              reaching 36.6 Gt as economies reopened. The Arctic experienced its
-              6th warmest year on record, with sea ice extent 12% below the
-              1981-2010 average.
+              <ScrollReveal
+                wordAnimationStart="top bottom-=15%"
+                wordAnimationEnd="bottom top+=30%"
+              >
+                Global CO₂ emissions rebounded sharply after the pandemic dip,
+                reaching 36.6 Gt as economies reopened. The Arctic experienced
+                its 6th warmest year on record, with sea ice extent 12% below
+                the 1981-2010 average.
+              </ScrollReveal>
             </p>
           </div>
         </div>
 
         <div className="flex items-start gap-4">
           <div>
-            <h3 className={typography.h3}>Extreme Weather Events</h3>
+            <h3 className={typography.h3}>
+              <ScrollReveal
+                wordAnimationStart="top bottom-=15%"
+                wordAnimationEnd="bottom top+=30%"
+              >
+                Extreme Weather Events
+              </ScrollReveal>
+            </h3>
             <p className={typography.body}>
-              Pakistan faced catastrophic floods covering 1/3 of the country,
-              affecting 33 million people. Europe experienced its hottest summer
-              on record, with temperatures exceeding 40°C in the UK for the
-              first time.
+              <ScrollReveal
+                wordAnimationStart="top bottom-=15%"
+                wordAnimationEnd="bottom top+=30%"
+              >
+                Pakistan faced catastrophic floods covering 1/3 of the country,
+                affecting 33 million people. Europe experienced its hottest
+                summer on record, with temperatures exceeding 40°C in the UK for
+                the first time.
+              </ScrollReveal>
             </p>
           </div>
         </div>
-
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={chartAnimation}
-          className="mt-6 h-[300px] md:h-[400px] w-full"
-        >
-          <Line
-            data={climateData.co2}
-            options={{
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                title: {
-                  display: true,
-                  text: "Global CO₂ Emissions Trend (2015-2025)",
-                  font: { size: 16 },
-                },
-                annotation: {
-                  annotations: {
-                    pandemic: {
-                      type: "line",
-                      yMin: 35.5,
-                      yMax: 35.5,
-                      borderColor: "rgb(75, 192, 192)",
-                      borderWidth: 2,
-                      label: {
-                        content: "COVID-19 Dip",
-                        display: true,
-                        position: "end",
+        <AnimatedContent direction="horizontal">
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={chartAnimation}
+            className="mt-6 h-[300px] md:h-[400px] w-full"
+          >
+            <Line
+              data={climateData.co2}
+              options={{
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                  title: {
+                    display: true,
+                    text: "Global CO₂ Emissions Trend (2015-2025)",
+                    font: { size: 16 },
+                  },
+                  annotation: {
+                    annotations: {
+                      pandemic: {
+                        type: "line",
+                        yMin: 35.5,
+                        yMax: 35.5,
+                        borderColor: "rgb(75, 192, 192)",
+                        borderWidth: 2,
+                        label: {
+                          content: "COVID-19 Dip",
+                          display: true,
+                          position: "end",
+                        },
                       },
                     },
                   },
                 },
-              },
-            }}
-          />
-          <p className={typography.caption}>
-            *2025 data projected based on current trends
-          </p>
-        </motion.div>
+              }}
+            />
+            <p className={typography.caption}>
+              *2025 data projected based on current trends
+            </p>
+          </motion.div>
+        </AnimatedContent>
       </div>
     ),
   },
@@ -497,35 +523,42 @@ function App() {
         <div className="relative w-full">
           {/* Navbar */}
           <HeroHeader />
-          <div className="bg-[#EDFFEC]">
-            <div className="h-svh lg:pt-19 pt-20 lg:px-10 px-3">
+          <div className="bg-[#ffffff]">
+            <div className="h-svh lg:pt-19 pt-20 lg:px-5 px-1">
               <div className="overflow-hidden relative rounded-2xl border border-black/10 lg:rounded-4xl h-[calc(100svh-90px)]">
-                <img
-                  src="./img/hero.jpeg"
-                  alt="hero background"
-                  className="absolute inset-0 w-full h-full object-cover object-center"
-                />
-                <div className="relative z-10 flex items-start h-full px-4 pt-10 pb-8 lg:px-12 lg:pb-16">
-                  <AnimatedContent direction="horizontal" reverse>
-                    <div className="max-w-md lg:max-w-xl text-[#033009] ">
-                      <h1 className="text-3xl text-balance lg:text-5xl font-bold leading-tight drop-shadow-md">
-                        A Greener Future Starts With Us
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="absolute inset-0 w-full h-full object-cover object-center brightness-[45%]"
+                  src="https://aerleum.com/wp-content/uploads/2024/10/AERLEUM_video_hp_OK.mp4"
+                ></video>
+                <div className="relative z-10 flex flex-col justify-end h-full px-4 pt-10 pb-20 lg:px-12 lg:pb-16">
+                  <AnimatedContent direction="vertical" distance={50}>
+                    <div className="max-w-lg lg:max-w-3xl text-white">
+                      <h1 className="text-4xl text-balance lg:text-7xl font-bold leading-tight drop-shadow-md">
+                        A Greener Future. Built by Us.
                       </h1>
+                      <p className="mt-4 text-xl lg:text-xl leading-tight drop-shadow-sm">
+                        Leading the charge towards a sustainable world for
+                        generations to come.
+                      </p>
+                      <a
+                        href="#actions"
+                        className="inline-block mt-8 px-6 py-3 bg-white text-green-700 font-semibold rounded-full hover:bg-gray-200 transition duration-300 shadow-lg"
+                      >
+                        Learn More
+                      </a>
                     </div>
                   </AnimatedContent>
                 </div>
-                <AnimatedContent direction="horizontal">
-                  <div className="absolute max-w-md text-balance bottom-10 right-4 lg:right-12 z-10 text-[#033009] text-3xl lg:text-4xl font-bold leading-tight drop-shadow-md text-right">
-                    Let’s take meaningful steps toward a healthier planet,
-                    together.
-                  </div>
-                </AnimatedContent>
               </div>
             </div>
           </div>
 
           {/* Section Timeline */}
-          <div className="min-h-svh lg:pt-19 pt-20 lg:px-10 px-3 bg-[#d7dacf]">
+          <div className="min-h-svh lg:pt-19 pt-20 lg:px-10 px-3 bg-[#ffffff]">
             <h2 className="pl-3 lg:pl-15 text-3xl lg:text-5xl font-bold text-green-800 drop-shadow-md">
               A Planet in Crisis: Year by Year
             </h2>
@@ -535,20 +568,28 @@ function App() {
           {/* Section Action */}
           <div
             id="actions"
-            className="min-h-svh lg:pt-19 pt-20 lg:px-10 px-3 bg-[#d7dacf]"
+            className="min-h-svh lg:pt-19 pt-20 lg:px-10 px-3 bg-[#ffffff]"
           >
-            <AnimatedContent direction="vertical">
-              <div className="text-center mb-10">
-                <h2 className="text-3xl font-bold text-green-800 drop-shadow-md">
-                  Small Steps, Powerful Change for the Planet
-                </h2>
-                <p className="mt-2 text-base text-gray-700 max-w-2xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold text-green-800 drop-shadow-md">
+              <ScrollReveal
+                wordAnimationStart="top bottom-=15%" 
+                wordAnimationEnd="bottom top+=50%"
+                >
+                Small Steps, Powerful Change for the Planet
+              </ScrollReveal>
+              </h2>
+              <p className="mt-2 text-base text-gray-700 max-w-2xl mx-auto">
+                <ScrollReveal
+                wordAnimationStart="top bottom-=15%" 
+                wordAnimationEnd="bottom top+=50%"
+                >
                   Real change begins with everyday actions. By rethinking how we
                   live, consume, and care for nature, we each hold the power to
                   shape a healthier, more sustainable world—one step at a time.
-                </p>
-              </div>
-            </AnimatedContent>
+                </ScrollReveal>
+              </p>
+            </div>
             <ExpandableSections />
           </div>
 
@@ -558,7 +599,7 @@ function App() {
             className="relative flex flex-col items-center justify-center px-4 py-20 overflow-hidden"
           >
             {/* Background decorative elements */}
-            <div className="absolute inset-0 bg-[#d7dacf] mask-b-from-60%"></div>
+            <div className="absolute inset-0 bg-[#ffffff] mask-b-from-60%"></div>
 
             <FadeContent
               blur={true}

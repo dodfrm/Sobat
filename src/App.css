@@ -2,6 +2,26 @@
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
+body {
+  font-family: 'Inter', sans-serif; /* Jadikan Inter sebagai font default */
+  line-height: 1.5; /* Good practice untuk readability */
+}
+
+/* Terapkan DM Sans ke elemen heading (h1, h2, dll.) atau kelas tertentu */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'DM Sans', sans-serif;
+  /* Anda bisa menambahkan properti lain di sini, misal font-weight default untuk heading */
+  font-weight: 700; /* Contoh: DM Sans Bold */
+}
+
+/* Atau buat kelas kustom jika Anda ingin lebih spesifik */
+.font-dm-sans {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
 
 .container {
   height: 100dvh;
@@ -9,7 +29,6 @@
 
 *{
   scroll-behavior: smooth;
-  
 }
 .burger-3 input {
   display: none;
