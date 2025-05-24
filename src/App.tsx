@@ -21,8 +21,10 @@ import {
   Legend,
   ArcElement,
 } from "chart.js";
-import { motion } from "framer-motion";
 import ScrollReveal from "./Animations/ScrollReveal/ScrollReveal";
+import TextReveal from "./Animations/TextReveal";
+import TextReveal2 from "./Animations/TextReveal2";
+import AnimatedLine from "./Component/AnimatedLine";
 
 ChartJS.register(
   CategoryScale,
@@ -59,10 +61,6 @@ const typography = {
   body: "text-base md:text-lg leading-relaxed mb-4",
   caption: "text-sm md:text-base opacity-80"
 };
-const chartAnimation = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
-};
 const testimonials = [
   {
     quote:
@@ -89,21 +87,47 @@ const testimonials = [
 
 const climateData = {
   co2: {
-    labels: ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025*"],
+    labels: [
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025*",
+    ],
     datasets: [
       {
         label: "Global CO₂ Emissions (Gigatons)",
-        data: [35.1, 35.3, 35.7, 36.1, 36.4, 35.5, 36.2, 36.6, 37.1, 37.5, 38.0],
+        data: [
+          35.1, 35.3, 35.7, 36.1, 36.4, 35.5, 36.2, 36.6, 37.1, 37.5, 38.0,
+        ],
         borderColor: theme.colors.co2,
         backgroundColor: "rgba(202, 60, 37, 0.2)",
         pointBackgroundColor: theme.colors.co2,
         tension: 0.3,
-        fill: true
-      }
-    ]
+        fill: true,
+      },
+    ],
   },
   temp: {
-    labels: ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025*"],
+    labels: [
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025*",
+    ],
     datasets: [
       {
         label: "Global Temperature Anomaly (°C vs 1951-1980)",
@@ -112,20 +136,32 @@ const climateData = {
         backgroundColor: "rgba(53, 80, 112, 0.2)",
         pointBackgroundColor: theme.colors.temp,
         tension: 0.3,
-        fill: true
-      }
-    ]
+        fill: true,
+      },
+    ],
   },
   wildfire: {
-    labels: ["2015", "2016", "2017", "2018", "2019", "2020", "2021", "2022", "2023", "2024", "2025*"],
+    labels: [
+      "2015",
+      "2016",
+      "2017",
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025*",
+    ],
     datasets: [
       {
         label: "Global Wildfire Area Burned (Million hectares)",
         data: [8, 9, 10, 11, 12, 13, 14, 15, 18, 20, 22],
         backgroundColor: theme.colors.wildfire,
-        borderRadius: 4
-      }
-    ]
+        borderRadius: 4,
+      },
+    ],
   },
   disasters: {
     labels: ["Wildfires", "Floods", "Droughts", "Heatwaves", "Storms"],
@@ -138,12 +174,12 @@ const climateData = {
           theme.colors.flood,
           theme.colors.drought,
           theme.colors.co2,
-          theme.colors.temp
+          theme.colors.temp,
         ],
-        borderWidth: 1
-      }
-    ]
-  }
+        borderWidth: 1,
+      },
+    ],
+  },
 };
 
 // Enhanced timeline data with more metrics and stories
@@ -155,92 +191,57 @@ const dataTimeline = [
         <div className="flex items-start gap-4">
           <div>
             <h3 className={typography.h3}>
-              <ScrollReveal
-                wordAnimationStart="top bottom-=15%"
-                wordAnimationEnd="bottom top+=30%"
+              <TextReveal2
+              duration={0.5}
               >
                 Carbon Emissions Surge
-              </ScrollReveal>
+              </TextReveal2>
             </h3>
             <p className={typography.body}>
-              <ScrollReveal
-                wordAnimationStart="top bottom-=15%"
-                wordAnimationEnd="bottom top+=30%"
-              >
-                Global CO₂ emissions rebounded sharply after the pandemic dip,
-                reaching 36.6 Gt as economies reopened. The Arctic experienced
-                its 6th warmest year on record, with sea ice extent 12% below
-                the 1981-2010 average.
+              <ScrollReveal>
+                Global CO₂ emissions reached 36.6 Gt. The Arctic experienced its
+                6th warmest year, with sea ice 12% below average.
               </ScrollReveal>
             </p>
           </div>
         </div>
 
-        <div className="flex items-start gap-4">
-          <div>
-            <h3 className={typography.h3}>
-              <ScrollReveal
-                wordAnimationStart="top bottom-=15%"
-                wordAnimationEnd="bottom top+=30%"
-              >
-                Extreme Weather Events
-              </ScrollReveal>
-            </h3>
-            <p className={typography.body}>
-              <ScrollReveal
-                wordAnimationStart="top bottom-=15%"
-                wordAnimationEnd="bottom top+=30%"
-              >
-                Pakistan faced catastrophic floods covering 1/3 of the country,
-                affecting 33 million people. Europe experienced its hottest
-                summer on record, with temperatures exceeding 40°C in the UK for
-                the first time.
-              </ScrollReveal>
-            </p>
-          </div>
-        </div>
-        <AnimatedContent direction="horizontal">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={chartAnimation}
-            className="mt-6 h-[300px] md:h-[400px] w-full"
-          >
-            <Line
-              data={climateData.co2}
-              options={{
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                  title: {
-                    display: true,
-                    text: "Global CO₂ Emissions Trend (2015-2025)",
-                    font: { size: 16 },
-                  },
-                  annotation: {
-                    annotations: {
-                      pandemic: {
-                        type: "line",
-                        yMin: 35.5,
-                        yMax: 35.5,
-                        borderColor: "rgb(75, 192, 192)",
-                        borderWidth: 2,
-                        label: {
-                          content: "COVID-19 Dip",
-                          display: true,
-                          position: "end",
-                        },
+        {/* Removed AnimatedContent and motion.div for charts */}
+        <div className="mt-6 h-[300px] md:h-[400px] w-full">
+          <Line
+            data={climateData.co2}
+            options={{
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: {
+                title: {
+                  display: true,
+                  text: "Global CO₂ Emissions Trend (2015-2025)",
+                  font: { size: 16 },
+                },
+                annotation: {
+                  annotations: {
+                    pandemic: {
+                      type: "line",
+                      yMin: 35.5,
+                      yMax: 35.5,
+                      borderColor: "rgb(75, 192, 192)",
+                      borderWidth: 2,
+                      label: {
+                        content: "COVID-19 Dip",
+                        display: true,
+                        position: "end",
                       },
                     },
                   },
                 },
-              }}
-            />
-            <p className={typography.caption}>
-              *2025 data projected based on current trends
-            </p>
-          </motion.div>
-        </AnimatedContent>
+              },
+            }}
+          />
+          <p className={typography.caption}>
+            *2025 data projected based on current trends
+          </p>
+        </div>
       </div>
     ),
   },
@@ -252,10 +253,8 @@ const dataTimeline = [
           <div>
             <h3 className={typography.h3}>Temperature Records Shattered</h3>
             <p className={typography.body}>
-              July 2023 became the hottest month ever recorded globally, with
-              many regions experiencing temperatures 2-3°C above average.
-              Antarctic sea ice reached its lowest extent since satellite
-              records began, at 1.79 million km² in February.
+              July 2023 was the hottest month ever recorded globally. Antarctic
+              sea ice hit its lowest extent since satellite records began.
             </p>
           </div>
         </div>
@@ -265,20 +264,13 @@ const dataTimeline = [
             <h3 className={typography.h3}>Unprecedented Wildfires</h3>
             <p className={typography.body}>
               Canadian wildfires burned over 18 million hectares, releasing 1.5
-              Gt of CO₂ - more than the country's annual emissions. Greece faced
-              devastating fires that destroyed 20% of its forests in some
-              regions.
+              Gt of CO₂. Greece lost 20% of its forests.
             </p>
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={chartAnimation}
-            className="h-[300px] md:h-[350px] w-full"
-          >
+          <div className="h-[300px] md:h-[350px] w-full">
             <Line
               data={climateData.temp}
               options={{
@@ -293,13 +285,8 @@ const dataTimeline = [
                 },
               }}
             />
-          </motion.div>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={chartAnimation}
-            className="h-[300px] md:h-[350px] w-full"
-          >
+          </div>
+          <div className="h-[300px] md:h-[350px] w-full">
             <Bar
               data={climateData.wildfire}
               options={{
@@ -314,7 +301,7 @@ const dataTimeline = [
                 },
               }}
             />
-          </motion.div>
+          </div>
         </div>
       </div>
     ),
@@ -327,10 +314,8 @@ const dataTimeline = [
           <div>
             <h3 className={typography.h3}>Ecosystem Collapse</h3>
             <p className={typography.body}>
-              The Amazon faced its worst drought in recorded history, with river
-              levels dropping 5m below average. This led to mass fish deaths and
-              isolated indigenous communities. Simultaneously, global coral
-              bleaching affected over 60% of reefs.
+              The Amazon faced its worst drought, with river levels dropping 5m.
+              Global coral bleaching affected over 60% of reefs.
             </p>
           </div>
         </div>
@@ -339,21 +324,16 @@ const dataTimeline = [
           <div>
             <h3 className={typography.h3}>Deadly Climate Extremes</h3>
             <p className={typography.body}>
-              Storm Daniel caused catastrophic flooding in Libya, with 11,000+
-              deaths in Derna alone after two dams collapsed. Meanwhile, Texas
-              experienced its worst drought in a decade, with agricultural
-              losses exceeding $7 billion.
+              Storm Daniel caused catastrophic flooding in Libya (11,000+
+              deaths). Texas had its worst drought in a decade, costing $7
+              billion.
             </p>
           </div>
         </div>
 
+        {/* Removed motion.div for charts */}
         <div className="grid md:grid-cols-2 gap-6">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={chartAnimation}
-            className="h-[300px] md:h-[350px] w-full"
-          >
+          <div className="h-[300px] md:h-[350px] w-full">
             <Pie
               data={climateData.disasters}
               options={{
@@ -368,13 +348,8 @@ const dataTimeline = [
                 },
               }}
             />
-          </motion.div>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={chartAnimation}
-            className="h-[300px] md:h-[350px] w-full"
-          >
+          </div>
+          <div className="h-[300px] md:h-[350px] w-full">
             <Bar
               data={{
                 labels: [
@@ -412,7 +387,7 @@ const dataTimeline = [
                 },
               }}
             />
-          </motion.div>
+          </div>
         </div>
       </div>
     ),
@@ -426,21 +401,15 @@ const dataTimeline = [
             Critical Thresholds Approaching
           </h3>
           <p className={`${typography.body} text-[#842029]`}>
-            Early data suggests 2025 may become the hottest year on record,
-            potentially exceeding +1.5°C above pre-industrial levels
-            temporarily. Scientists warn we may be approaching several climate
-            tipping points, including Greenland ice sheet collapse and Amazon
-            dieback.
+            2025 may be the hottest year on record, potentially exceeding
+            +1.5°C. Scientists warn of approaching climate tipping points like
+            Greenland ice sheet collapse.
           </p>
         </div>
 
+        {/* Removed motion.div for charts */}
         <div className="grid md:grid-cols-2 gap-6">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={chartAnimation}
-            className="h-[300px] md:h-[350px] w-full"
-          >
+          <div className="h-[300px] md:h-[350px] w-full">
             <Line
               data={climateData.temp}
               options={{
@@ -471,13 +440,8 @@ const dataTimeline = [
                 },
               }}
             />
-          </motion.div>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={chartAnimation}
-            className="h-[300px] md:h-[350px] w-full"
-          >
+          </div>
+          <div className="h-[300px] md:h-[350px] w-full">
             <Line
               data={climateData.co2}
               options={{
@@ -492,7 +456,7 @@ const dataTimeline = [
                 },
               }}
             />
-          </motion.div>
+          </div>
         </div>
 
         <div className="bg-[#e7f5ff] p-4 rounded-lg border border-[#d0ebff]">
@@ -500,10 +464,8 @@ const dataTimeline = [
             The Path Forward
           </h3>
           <p className={`${typography.body} text-[#1864ab]`}>
-            While the projections are alarming, experts emphasize that
-            immediate, drastic emissions reductions could still stabilize the
-            climate. Renewable energy adoption is accelerating, with solar
-            capacity growing 40% year-over-year in 2024.
+            Immediate emissions reductions are crucial. Renewable energy is
+            accelerating, with solar capacity up 40% year-over-year in 2024.
           </p>
         </div>
       </div>
@@ -511,6 +473,7 @@ const dataTimeline = [
   },
 ];
 function App() {
+  
   return (
     <>
       <ClickSpark
@@ -535,23 +498,35 @@ function App() {
                   src="https://aerleum.com/wp-content/uploads/2024/10/AERLEUM_video_hp_OK.mp4"
                 ></video>
                 <div className="relative z-10 flex flex-col justify-end h-full px-4 pt-10 pb-20 lg:px-12 lg:pb-16">
-                  <AnimatedContent direction="vertical" distance={50}>
-                    <div className="max-w-lg lg:max-w-3xl text-white">
-                      <h1 className="text-4xl text-balance lg:text-7xl font-bold leading-tight drop-shadow-md">
+                  <div className="max-w-lg lg:max-w-3xl text-white">
+                    <h1 className="text-4xl text-balance lg:text-7xl font-bold leading-tight drop-shadow-md">
+                      <TextReveal
+                        delay={0.5}
+                        duration={1}
+                        startTrigger="top bottom"
+                        endTrigger="bottom 20%"
+                      >
                         A Greener Future. Built by Us.
-                      </h1>
-                      <p className="mt-4 text-xl lg:text-xl leading-tight drop-shadow-sm">
+                      </TextReveal>
+                    </h1>
+                    <p className="mt-4 font-light text-xl lg:text-xl leading-tight italic drop-shadow-sm">
+                      <TextReveal
+                        delay={0.5}
+                        duration={0.5}
+                        startTrigger="top bottom"
+                        endTrigger="bottom 20%"
+                      >
                         Leading the charge towards a sustainable world for
                         generations to come.
-                      </p>
-                      <a
-                        href="#actions"
-                        className="inline-block mt-8 px-6 py-3 bg-white text-green-700 font-semibold rounded-full hover:bg-gray-200 transition duration-300 shadow-lg"
-                      >
-                        Learn More
-                      </a>
-                    </div>
-                  </AnimatedContent>
+                      </TextReveal>
+                    </p>
+                    <a
+                      href="#actions"
+                      className="inline-block mt-8 px-6 py-3 bg-white text-green-700 font-semibold rounded-full hover:bg-gray-200 transition duration-300 shadow-lg"
+                    >
+                      Learn More
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -559,6 +534,14 @@ function App() {
 
           {/* Section Timeline */}
           <div className="min-h-svh lg:pt-19 pt-20 lg:px-10 px-3 bg-[#ffffff]">
+          <AnimatedLine
+            color="black"
+            thickness={1.5}
+            animationDuration={2}
+            startTrigger="top 90%"
+            endTrigger="bottom 10%"
+            className="mb-10 mx-2"
+          />
             <h2 className="pl-3 lg:pl-15 text-3xl lg:text-5xl font-bold text-green-800 drop-shadow-md">
               A Planet in Crisis: Year by Year
             </h2>
@@ -571,19 +554,8 @@ function App() {
             className="min-h-svh lg:pt-19 pt-20 lg:px-10 px-3 bg-[#ffffff]"
           >
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-green-800 drop-shadow-md">
-              <ScrollReveal
-                wordAnimationStart="top bottom-=15%" 
-                wordAnimationEnd="bottom top+=50%"
-                >
-                Small Steps, Powerful Change for the Planet
-              </ScrollReveal>
-              </h2>
-              <p className="mt-2 text-base text-gray-700 max-w-2xl mx-auto">
-                <ScrollReveal
-                wordAnimationStart="top bottom-=15%" 
-                wordAnimationEnd="bottom top+=50%"
-                >
+              <p className="mt-2 text-3xl text-balance text-gray-700 max-w-4xl mx-auto">
+                <ScrollReveal>
                   Real change begins with everyday actions. By rethinking how we
                   live, consume, and care for nature, we each hold the power to
                   shape a healthier, more sustainable world—one step at a time.
