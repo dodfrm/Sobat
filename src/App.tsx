@@ -207,6 +207,13 @@ const dataTimeline = [
         </div>
 
         {/* Removed AnimatedContent and motion.div for charts */}
+        <FadeContent
+              blur={true}
+              duration={300}
+              easing="ease-in-out"
+              initialOpacity={0}
+              delay={200}
+            > 
         <div className="mt-6 h-[300px] md:h-[400px] w-full">
           <Line
             data={climateData.co2}
@@ -242,6 +249,7 @@ const dataTimeline = [
             *2025 data projected based on current trends
           </p>
         </div>
+        </FadeContent>
       </div>
     ),
   },
@@ -495,7 +503,7 @@ function App() {
                   muted
                   playsInline
                   className="absolute inset-0 w-full h-full object-cover object-center brightness-[45%]"
-                  src="https://aerleum.com/wp-content/uploads/2024/10/AERLEUM_video_hp_OK.mp4"
+                  src="/img/hero-video.mp4"
                 ></video>
                 <div className="relative z-10 flex flex-col justify-end h-full px-4 pt-10 pb-20 lg:px-12 lg:pb-16">
                   <div className="max-w-lg lg:max-w-3xl text-white">
@@ -520,6 +528,7 @@ function App() {
                         generations to come.
                       </TextReveal>
                     </p>
+
                     <a
                       href="#actions"
                       className="inline-block mt-8 px-6 py-3 bg-white text-green-700 font-semibold rounded-full hover:bg-gray-200 transition duration-300 shadow-lg"
@@ -534,16 +543,21 @@ function App() {
 
           {/* Section Timeline */}
           <div className="min-h-svh lg:pt-19 pt-20 lg:px-10 px-3 bg-[#ffffff]">
-          <AnimatedLine
-            color="black"
-            thickness={1.5}
-            animationDuration={2}
-            startTrigger="top 90%"
-            endTrigger="bottom 10%"
-            className="mb-10 mx-2"
-          />
-            <h2 className="pl-3 lg:pl-15 text-3xl lg:text-5xl font-bold text-green-800 drop-shadow-md">
+            <AnimatedLine
+              color="black"
+              thickness={1.5}
+              animationDuration={1.5}
+              startTrigger="top 90%"
+              endTrigger="bottom 10%"
+              className="mb-10 mx-2"
+            />
+            <h2 className="pl-3 lg:pl-15 text-3xl lg:text-5xl font-bold text-black drop-shadow-md">
+              <TextReveal2
+                delay={0.5}
+                duration={1}
+                > 
               A Planet in Crisis: Year by Year
+              </TextReveal2>
             </h2>
             <Timeline data={dataTimeline} />
           </div>
@@ -554,7 +568,7 @@ function App() {
             className="min-h-svh lg:pt-19 pt-20 lg:px-10 px-3 bg-[#ffffff]"
           >
             <div className="text-center mb-10">
-              <p className="mt-2 text-3xl text-balance text-gray-700 max-w-4xl mx-auto">
+              <p className="mt-2 text-3xl text-balance text-black max-w-4xl mx-auto">
                 <ScrollReveal>
                   Real change begins with everyday actions. By rethinking how we
                   live, consume, and care for nature, we each hold the power to
@@ -570,22 +584,25 @@ function App() {
             id="our-team"
             className="relative flex flex-col items-center justify-center px-4 py-20 overflow-hidden"
           >
-            {/* Background decorative elements */}
-            <div className="absolute inset-0 bg-[#ffffff] mask-b-from-60%"></div>
-
-            <FadeContent
-              blur={true}
-              duration={300}
-              easing="ease-in-out"
-              initialOpacity={0}
-              delay={200}
-            >
+            <AnimatedLine
+              color="black"
+              thickness={1.5}
+              animationDuration={1.5}
+              startTrigger="top bottom"
+              endTrigger="bottom top"
+              className="mb-10 mx-2"
+            />
               <div className="text-center max-w-3xl mx-auto">
-                <h2 className="mb-6 text-3xl font-bold text-green-800 drop-shadow-md">
+                <h2 className="mb-6 text-3xl font-bold text-black drop-shadow-md">
+                  <TextReveal2
+                    delay={0.5}
+                    duration={1}
+                    startTrigger="top bottom"
+                    endTrigger="bottom top">
                   Our Team
+                  </TextReveal2>
                 </h2>
               </div>
-            </FadeContent>
             <AnimatedContent direction="vertical" distance={50}>
               <OurTeam testimonials={testimonials} />
             </AnimatedContent>

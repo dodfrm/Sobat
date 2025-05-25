@@ -1,7 +1,12 @@
 "use client";
 
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
-import { motion, AnimatePresence } from "motion/react";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  PanInfo,
+} from "framer-motion";
 import { useEffect, useState } from "react";
 
 type Testimonial = {
@@ -10,6 +15,7 @@ type Testimonial = {
   designation: string;
   src: string;
 };
+
 export const OurTeam = ({
   testimonials,
   autoplay = false,
@@ -18,6 +24,7 @@ export const OurTeam = ({
   autoplay?: boolean;
 }) => {
   const [active, setActive] = useState(0);
+  const x = useMotionValue(0);
 
   const handleNext = () => {
     setActive((prev) => (prev + 1) % testimonials.length);
@@ -41,6 +48,18 @@ export const OurTeam = ({
   const randomRotateY = () => {
     return Math.floor(Math.random() * 21) - 10;
   };
+
+  const handleDragEnd = (_: any, info: PanInfo) => {
+    if (info.offset.x > 100) {
+      // Swipe right
+      handlePrev();
+    } else if (info.offset.x < -100) {
+      // Swipe left
+      handleNext();
+    }
+    x.set(0);
+  };
+
   return (
     <div className="mx-auto max-w-sm px-4 py-5 antialiased md:max-w-4xl md:px-8 lg:px-12">
       <div className="relative grid grid-cols-1 md:gap-20 md:grid-cols-2">
@@ -77,6 +96,10 @@ export const OurTeam = ({
                     ease: "easeInOut",
                   }}
                   className="absolute inset-0 origin-bottom"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  onDragEnd={handleDragEnd}
+                  style={{ x: isActive(index) ? x : 0 }}
                 >
                   <img
                     src={testimonial.src}

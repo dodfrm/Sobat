@@ -22,7 +22,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
   scrollContainerRef,
   enableBlur = false,
-  baseOpacity = 0.2,
+  baseOpacity = 0.1,
   baseRotation = 0,
   blurStrength = 0,
   containerClassName = "",
