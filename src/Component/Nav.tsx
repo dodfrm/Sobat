@@ -45,7 +45,7 @@ export const HeroHeader = () => {
           className={cn(
             "mx-auto mt-2 max-w-6xl px-6 transition-all duration-400 lg:px-12",
             isScrolled &&
-              "bg-[#EDFFEC] max-w-4xl rounded-2xl border border-black/10 lg:px-5"
+              "bg-transparent backdrop-blur-[30px] max-w-4xl rounded-2xl border border-black/15 lg:px-5"
           )}
         >
           <div className="relative flex flex-wrap items-center justify-between gap-6 py-3 lg:gap-0 lg:py-2">
@@ -132,12 +132,12 @@ export const HeroHeader = () => {
 
             {/* Desktop Menu */}
             <div className="absolute inset-0 m-auto hidden size-fit lg:block">
-              <ul className="flex gap-8 text-sm font-semibold">
+              <ul className="flex gap-6 text-md font-normal">
                 {menuItems.map((item, index) => (
                   <li key={index}>
                     <a
                       href={item.href}
-                      className="text-[#033009] hover:text-accent-foreground block duration-150"
+                      className="text-black hover:text-accent-foreground block duration-150"
                     >
                       <span>{item.name}</span>
                     </a>
@@ -154,12 +154,12 @@ export const HeroHeader = () => {
               )}
             >
               <div className="lg:hidden mb-0">
-                <ul className="space-y-6 font-semibold">
+                <ul className="space-y-6 font-normal">
                   {menuItems.map((item, index) => (
                     <li key={index}>
                       <a
                         href={item.href}
-                        className="text-[#033009] text-center hover:text-accent-foreground block duration-150"
+                        className="text-black text-center hover:text-accent-foreground block duration-150"
                       >
                         <span>{item.name}</span>
                       </a>

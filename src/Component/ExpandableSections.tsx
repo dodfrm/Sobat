@@ -1,7 +1,7 @@
 // Updated ExpandableSections.tsx
 import { useEffect, useRef } from "react";
 import "./../style.scss";
-import TextReveal2 from "@/Animations/TextReveal2";
+import TextReveal2 from "@/Animations/TextAnimations/TextReveal2";
 
 export default function ExpandableSections() {
   const contRef = useRef<HTMLDivElement>(null);

@@ -51,16 +51,8 @@ const TextReveal2: React.FC<TextRevealProps> = ({
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return; // Bersihkan referensi kata dari render sebelumnya
-    wordsRef.current = []; // Pastikan DOM sudah di-update sebelum mencari elemen .gsap-word // Untuk ini, kita akan menargetkan langsung `gsap-word` setelah `children` di-render // Karena `wordsRef` di-populate di dalam `getSplitText` saat render, // kita perlu memastikan bahwa `wordsRef.current` sudah terisi dengan benar. // Jika `children` tidak berubah, `getSplitText` tidak akan dipanggil ulang.
+    wordsRef.current = []; 
     const words = Array.from(container.querySelectorAll(".gsap-word > span")); // Target span anak di dalam .gsap-word
-
-    if (words.length === 0) {
-      console.warn(
-        "GSAP: Tidak ada elemen '.gsap-word > span' yang ditemukan untuk dianimasikan."
-      );
-
-      return;
-    }
 
     gsap.set(words, {
       yPercent: 100, // Sembunyikan di bawah
@@ -75,7 +67,6 @@ const TextReveal2: React.FC<TextRevealProps> = ({
         start: startTrigger,
         end: endTrigger,
         toggleActions: "play reverse play reverse", // Hanya putar sekali saat masuk
-        // markers: true, // Hapus atau jadikan false untuk production
       },
     });
 
@@ -106,8 +97,7 @@ const TextReveal2: React.FC<TextRevealProps> = ({
   ]); // Tambahkan semua props sebagai dependensi
 
   return (
-    // Gunakan div untuk membungkus teks, agar kita bisa menargetkan dengan containerRef
-
+    // Gunakan div untuk membungkus teks, agar bisa menargetkan dengan containerRef
     <div
       ref={containerRef}
       className={className}

@@ -1,7 +1,7 @@
 
 export default function FooterSection() {
   return (
-    <footer id="socials" className="py-16 md:py-32">
+    <footer id="socials" className="py-8 md:py-16 bg-black rounded-t-2xl mx-1">
       <div className="mx-auto max-w-5xl px-6"
       >
         <a
@@ -26,7 +26,7 @@ export default function FooterSection() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="X/Twitter"
-            className="text-muted-foreground hover:text-primary block"
+            className="text-white hover:text-muted-foreground block"
           >
             <svg
               className="size-6"
@@ -47,7 +47,7 @@ export default function FooterSection() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="text-muted-foreground hover:text-primary block"
+            className="text-white hover:text-muted-foreground block"
           >
             <svg
               className="size-6"
@@ -67,7 +67,7 @@ export default function FooterSection() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
-            className="text-muted-foreground hover:text-primary block"
+            className="text-white hover:text-muted-foreground block"
           >
             <svg
               className="size-6"
@@ -87,7 +87,7 @@ export default function FooterSection() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Threads"
-            className="text-muted-foreground hover:text-primary block"
+            className="text-white hover:text-muted-foreground block"
           >
             <svg
               className="size-6"
@@ -112,7 +112,7 @@ export default function FooterSection() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className="text-muted-foreground hover:text-primary block"
+            className="text-white hover:text-muted-foreground block"
           >
             <svg
               className="size-6"
@@ -132,7 +132,7 @@ export default function FooterSection() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="TikTok"
-            className="text-muted-foreground hover:text-primary block"
+            className="text-white hover:text-muted-foreground block"
           >
             <svg
               className="size-6"
@@ -148,7 +148,7 @@ export default function FooterSection() {
             </svg>
           </a>
         </div>
-        <span className="text-muted-foreground block text-center text-sm">
+        <span className="text-white block text-center text-sm">
           © {new Date().getFullYear()} Sobat Bumi, All rights reserved
         </span>
       </div>

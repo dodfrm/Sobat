@@ -20,10 +20,10 @@ const TextReveal: React.FC<TextRevealProps> = ({
   children,
   className = "",
   delay = 0.5,
-  duration = 0.6, // Adjusted duration to match the example
-  staggerAmount = 0.02, // Adjusted stagger to match the example
-  startTrigger = "top 80%", // Adjusted start to match the example
-  endTrigger = "bottom 0%", // Keep this or adjust as needed
+  duration = 0.6, 
+  staggerAmount = 0.02, 
+  startTrigger = "top 80%", 
+  endTrigger = "bottom 0%",
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const splitTextRef = useRef<SplitText | null>(null); // To store the SplitText instance
@@ -65,7 +65,7 @@ const TextReveal: React.FC<TextRevealProps> = ({
         trigger: container,
         start: startTrigger,
         end: endTrigger, // This might need adjustment based on desired scroll behavior
-        toggleActions: "restart pause resume reverse", // Matches the example
+        toggleActions: "restart pause resume reverse", 
         // markers: true, // Uncomment for debugging
         onLeaveBack: () => {
           // Optional: Revert animation when scrolling back up
