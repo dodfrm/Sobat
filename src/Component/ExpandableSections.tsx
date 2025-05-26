@@ -91,7 +91,7 @@ export default function ExpandableSections() {
         <div className="el__inner rounded-md">
           <div className="el__bg"></div>
           <div className="el__preview-cont">
-            <h2 className="rotate-270 lg:rotate-0 el__heading px-12 bg-[#EDFFEC] mx-4 rounded-sm flex w-full text-[#033009] items-center justify-center font-semibold">
+            <h2 className="rotate-270 lg:rotate-0 el__heading px-12 mx-4 flex w-full text-white items-center justify-center font-semibold">
               {item.heading}
             </h2>
           </div>
