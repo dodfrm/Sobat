@@ -395,8 +395,6 @@ function App() {
               color="black"
               thickness={2}
               animationDuration={1.5}
-              startTrigger="top bottom"
-              endTrigger="bottom top"
               className="mb-10 mx-2"
             />
             <div className="pl-2 mb-10 flex flex-col lg:flex-row lg:space-x-8">
@@ -415,9 +413,7 @@ function App() {
             </div>
           </div>
           {/* Footer */}
-          {/* <AnimatedContent animateOpacity={false} distance={200} delay={1}> */}
           <FooterSection />
-          {/* </AnimatedContent> */}
         </div>
       </ClickSpark>
     </>
