@@ -1,9 +1,11 @@
 
 export default function FooterSection() {
   return (
-    <footer id="socials" className="py-8 md:py-16 bg-black rounded-t-2xl mx-1">
-      <div className="mx-auto max-w-5xl px-6"
-      >
+    <footer
+      id="socials"
+      className="py-8 md:py-16 rounded-t-2xl mx-1 bg-black"
+    >
+      <div className="mx-auto max-w-5xl px-6 ">
         <a
           href="#"
           onClick={(e) => {

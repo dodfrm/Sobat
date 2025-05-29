@@ -1,7 +1,6 @@
 // Updated ExpandableSections.tsx
 import { useEffect, useRef } from "react";
 import "./../style.scss";
-import TextReveal2 from "@/Animations/TextAnimations/TextReveal2";
 
 export default function ExpandableSections() {
   const contRef = useRef<HTMLDivElement>(null);
@@ -97,9 +96,7 @@ export default function ExpandableSections() {
           </div>
           <div className="el__content flex flex-col items-center justify-center">
             <div className="el__text capitalize text-2xl lg:text-4xl lg:px-12">
-              <TextReveal2 delay={0.2} duration={0.5}>
                 {item.text}
-              </TextReveal2>
             </div>
           </div>
         </div>

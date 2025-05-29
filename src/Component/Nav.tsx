@@ -6,13 +6,10 @@ import {
   MenuButton,
   MenuItem,
   MenuItems,
-  Dialog,
-  DialogPanel,
-  DialogTitle,
 } from "@headlessui/react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Search, Globe } from "lucide-react";
+import { Globe } from "lucide-react";
 
 const menuItems = [
   { name: "Action", href: "#actions" },
@@ -24,7 +21,6 @@ const menuItems = [
 export const HeroHeader = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
-  const [searchOpen, setSearchOpen] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -61,15 +57,6 @@ export const HeroHeader = () => {
 
               {/* Search (Mobile Only) */}
               <div className="flex items-center gap-2 lg:hidden text-[#033009">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  onClick={() => setSearchOpen(true)}
-                  className="text-muted-foreground hover:text-accent-foreground"
-                >
-                  <Search className="h-5 w-5" />
-                </Button>
-
                 <Menu as="div" className="relative inline-block text-left">
                   <MenuButton
                     as={Button}
@@ -169,16 +156,6 @@ export const HeroHeader = () => {
               </div>
 
               <div className="lg:flex w-full items-center space-x-4 hidden">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-muted-foreground hover:text-accent-foreground hidden lg:flex"
-                  onClick={() => setSearchOpen(true)}
-                >
-                  <Search className="h-4 w-4" />
-                  <span className="ml-2 hidden lg:inline">Search</span>
-                </Button>
-
                 <Menu as="div" className="relative inline-block text-left">
                   <MenuButton
                     as={Button}
@@ -217,41 +194,6 @@ export const HeroHeader = () => {
         </div>
       </nav>
 
-      {/* Search Dialog */}
-      <Dialog
-        open={searchOpen}
-        as="div"
-        className="relative z-10 focus:outline-none"
-        onClose={setSearchOpen}
-      >
-        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-          <div className="flex min-h-full items-center justify-center p-4">
-            <DialogPanel
-              transition
-              className="w-full max-w-md rounded-xl bg-white/5 p-6 backdrop-blur-2xl duration-300 ease-out data-closed:transform-[scale(95%)] data-closed:opacity-0"
-            >
-              <DialogTitle
-                as="h3"
-                className="text-base/7 font-medium text-white"
-              >
-                Payment successful
-              </DialogTitle>
-              <p className="mt-2 text-sm/6 text-white/50">
-                Your payment has been successfully submitted. We’ve sent you an
-                email with all of the details of your order.
-              </p>
-              <div className="mt-4">
-                <Button
-                  className="inline-flex items-center gap-2 rounded-md bg-gray-700 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline data-focus:outline-white data-hover:bg-gray-600 data-open:bg-gray-700"
-                  onClick={() => setSearchOpen(false)}
-                >
-                  Got it, thanks!
-                </Button>
-              </div>
-            </DialogPanel>
-          </div>
-        </div>
-      </Dialog>
     </header>
   );
 };

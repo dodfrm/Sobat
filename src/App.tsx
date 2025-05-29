@@ -9,6 +9,7 @@ import { Timeline } from "./Component/Timeline";
 import TextReveal from "./Animations/TextAnimations/TextReveal";
 import AnimatedLine from "./Component/AnimatedLine";
 import CombinedTextReveal from "./Animations/TextAnimations/CombinedTextReveal";
+import Collapsible from "./Component/Collapsible";
 
 const testimonials = [
   {
@@ -52,11 +53,6 @@ const dataTimeline = [
             clean-ups and tree planting initiatives in local neighborhoods,
             engaging over 200 volunteers in our first year.
           </CombinedTextReveal>
-          <ul className="mt-3 space-y-2 text-base lg:text-lg">
-            <li>🌱 500+ trees planted</li>
-            <li>♻️ 3 tons of waste collected</li>
-            <li>👥 15 community workshops held</li>
-          </ul>
         </div>
       </div>
     ),
@@ -79,12 +75,6 @@ const dataTimeline = [
             Our first major campaign reduced plastic waste in participating
             stores by 40%.
           </CombinedTextReveal>
-          <ul className="mt-3 space-y-2 text-base lg:text-lg">
-            <li>🏫 Reached 5,000+ students</li>
-            <li>🤝 Partnered with 25 local businesses</li>
-            <li>📉 Reduced 8 tons of CO2 emissions</li>
-            <li>🏆 Won Green Community Award</li>
-          </ul>
         </div>
       </div>
     ),
@@ -99,19 +89,14 @@ const dataTimeline = [
             startTrigger="top bottom"
             endTrigger="bottom top"
           >
-            Technological Leap
+            Project Milestones
           </TextReveal>
           <CombinedTextReveal className="mt-2 text-2xl lg:text-4xl text-balance text-white mx-auto">
-            Developed our first sustainability app that helps users track their
-            carbon footprint. Launched large-scale urban farming initiative that
-            created 10 community gardens across the city.
+            Our urban gardening initiative provided fresh produce to 150
+            families while greening city spaces. We also completed a major waste
+            management pilot program in two districts, diverting 3 tons of waste
+            from landfills monthly and promoting circular economy principles.
           </CombinedTextReveal>
-          <ul className="mt-3 space-y-2 text-base lg:text-lg">
-            <li>📱 10,000+ app downloads</li>
-            <li>🌿 2 acres of urban farmland cultivated</li>
-            <li>🍎 1,000+ lbs of organic produce grown</li>
-            <li>🌍 Featured in UN Sustainability Report</li>
-          </ul>
         </div>
       </div>
     ),
@@ -129,17 +114,11 @@ const dataTimeline = [
             Global Ambitions
           </TextReveal>
 
-            <CombinedTextReveal className="mt-2 text-2xl lg:text-4xl text-balance text-white mx-auto">
-              Planning international expansion with pilot programs in 3
-              countries. Developing AI-powered tools for climate prediction and
-              sustainable agriculture. Goal to impact 1 million people by 2026.
-            </CombinedTextReveal>
-          <ul className="mt-3 space-y-2 text-base lg:text-lg">
-            <li>🌐 First international chapter opening</li>
-            <li>🤖 AI sustainability assistant in development</li>
-            <li>📚 Comprehensive online education platform</li>
-            <li>💡 Renewable energy projects in planning</li>
-          </ul>
+          <CombinedTextReveal className="mt-2 text-2xl lg:text-4xl text-balance text-white mx-auto">
+            Planning international expansion with pilot programs in 3 countries.
+            Developing AI-powered tools for climate prediction and sustainable
+            agriculture. Goal to impact 1 million people by 2026.
+          </CombinedTextReveal>
         </div>
       </div>
     ),
@@ -240,23 +219,24 @@ function App() {
           </div>
 
           {/* Section Timeline */}
-          <div className="min-h-svh py-20 lg:py-28 px-4 lg:px-16 bg-black rounded-3xl mx-1 lg:mx-3">
+          <div className="min-h-svh py-20 lg:py-20 px-4 lg:px-16 bg-black rounded-3xl mx-1 lg:mx-3">
             <div className="max-w-7xl mx-auto">
-              <div className="mb-16 lg:mb-20 text-center">
-                  <h2 className="text-4xl lg:text-6xl font-bold text-white mb-4">
-                    SOBUM <span className="text-green-400">Journey</span>
-                  </h2>
-                  <p className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
-                    Tracing our path from humble beginnings to making a global
-                    impact
-                  </p>
+              <div className="mb-16 text-center">
+                <h2 className="text-4xl lg:text-6xl font-bold text-white mb-4">
+                  SOBUM <span className="text-green-400">Journey</span>
+                </h2>
+                <p className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
+                  Tracing our path from humble beginnings to making a global
+                  impact
+                </p>
               </div>
 
               <div className="relative">
-                {/* Animated decorative element */}
-                <div className="absolute -top-10 left-0 w-full flex justify-center">
-                  <div className="h-1 w-20 bg-gradient-to-r from-green-400 to-blue-500 rounded-full"></div>
-                </div>
+                <AnimatedLine
+                  color="white"
+                  thickness={2}
+                  animationDuration={1.5}
+                  className="absolute left-1/2 top-0 h-full transform -translate-x-1/2" />
                 <Timeline data={dataTimeline} />
               </div>
             </div>
@@ -286,17 +266,140 @@ function App() {
             <ExpandableSections />
           </div>
 
+          {/* Section faq */}
+          <div id="faq" className="lg:pt-19 pt-20 lg:px-10 px-3 mb-20">
+            <div className="pl-2 mb-10 flex flex-col lg:flex-row lg:space-x-8">
+              <div className="text-start mb-5 pl-3 lg:mb-0 lg:w-1/5">
+                <p className="mt-2 text-xl text-balance text-black mx-auto">
+                  <TextReveal startTrigger="top bottom" endTrigger="bottom top">
+                    Frequently Asked Questions
+                  </TextReveal>
+                </p>
+              </div>
+              <div className="text-start lg:w-4/5">
+                <div className="max-w-4xl mx-auto space-y-4">
+                  <AnimatedLine
+                    color="black"
+                    thickness={2}
+                    animationDuration={1.5}
+                    className=" mx-2"
+                  />
+                  <Collapsible
+                    title={
+                      <TextReveal
+                        className="my-2 text-2xl ml-2 lg:text-3xl font-semibold text-balance text-black"
+                        startTrigger="top bottom"
+                        endTrigger="bottom top"
+                      >
+                        What is SOBUM?
+                      </TextReveal>
+                    }
+                  >
+                    <p className="mt-2 text-xl ml-2 text-balance text-black mx-auto">
+                      SOBUM (Sobat Bumi) is a community-driven initiative
+                      focused on combating climate change through education,
+                      sustainable practices, and grassroots action. We aim to
+                      empower individuals and communities to make a positive
+                      impact on the environment.
+                    </p>
+                  </Collapsible>
+
+                  <AnimatedLine
+                    color="black"
+                    thickness={2}
+                    animationDuration={1.5}
+                    className="mx-2"
+                  />
+                  <Collapsible
+                    title={
+                      <TextReveal
+                        className="text-2xl my-2 ml-2 lg:text-3xl font-semibold text-balance text-black"
+                        startTrigger="top bottom"
+                        endTrigger="bottom top"
+                      >
+                        How does solar energy work?
+                      </TextReveal>
+                    }
+                  >
+                    <p className="mt-2 ml-2 text-xl text-balance text-black mx-auto">
+                      Solar energy works by converting sunlight into electricity
+                      using photovoltaic (PV) cells. These cells are made of
+                      semiconductor materials that generate direct current (DC)
+                      electricity when exposed to sunlight. An inverter then
+                      converts this DC electricity into alternating current (AC)
+                      electricity, which can be used to power homes and
+                      businesses.
+                    </p>
+                  </Collapsible>
+
+                  <AnimatedLine
+                    color="black"
+                    thickness={2}
+                    animationDuration={1.5}
+                    className=" mx-2"
+                  />
+                  <Collapsible
+                    title={
+                      <TextReveal
+                        className="text-2xl my-2 ml-2 lg:text-3xl font-semibold text-balance text-black"
+                        startTrigger="top bottom"
+                        endTrigger="bottom top"
+                      >
+                        How can I get involved with SOBUM?
+                      </TextReveal>
+                    }
+                  >
+                    <p className="mt-2 ml-2 text-xl text-balance text-black mx-auto">
+                      You can get involved with SOBUM by volunteering for our
+                      events, participating in our educational programs, or
+                      donating to support our initiatives. Follow us on social
+                      media to stay updated on upcoming activities and how you
+                      can contribute.
+                    </p>
+                  </Collapsible>
+
+                  <AnimatedLine
+                    color="black"
+                    thickness={2}
+                    animationDuration={1.5}
+                    className="mx-2"
+                  />
+                  <Collapsible
+                    title={
+                      <TextReveal
+                        className="text-2xl my-2 ml-2 lg:text-3xl font-semibold text-balance text-black"
+                        startTrigger="top bottom"
+                        endTrigger="bottom top"
+                      >
+                        What are SOBUM's main programs?
+                      </TextReveal>
+                    }
+                  >
+                    <p className="mt-2 ml-2 text-xl text-balance text-black mx-auto">
+                      SOBUM has several key programs, including educational
+                      workshops on sustainable living, tree-planting campaigns,
+                      and the development of small-scale renewable energy
+                      projects in local communities. We also regularly hold
+                      webinars and open discussions to raise awareness about
+                      climate change issues.
+                    </p>
+                  </Collapsible>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Section Our Team */}
-          <div id="our-team" className="lg:pt-19 pt-20 lg:px-10 px-3">
+          <div id="our-team" className="lg:pt-19 pt-20 lg:px-10 px-3 mb-20">
             <AnimatedLine
               color="black"
               thickness={2}
               animationDuration={1.5}
-              startTrigger="top 90%"
-              endTrigger="bottom 10%"
+              startTrigger="top bottom"
+              endTrigger="bottom top"
               className="mb-10 mx-2"
             />
-            <div className="pl-2 mb-10 py-10 flex flex-col lg:flex-row lg:space-x-8">
+            <div className="pl-2 mb-10 flex flex-col lg:flex-row lg:space-x-8">
               <div className="text-start mb-5 pl-3 lg:mb-0 lg:w-1/3">
                 <p className="mt-2 text-xl text-balance text-black mx-auto">
                   <TextReveal startTrigger="top bottom" endTrigger="bottom top">
