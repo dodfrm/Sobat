@@ -144,7 +144,7 @@ export const HeroHeader = () => {
                           e.preventDefault();
                           handleMobileNavClick(item.href);
                         }}
-                        className="text-black text-2xl hover:text-accent-foreground block duration-150 py-2"
+                        className="font-semibold text-black text-2xl hover:text-accent-foreground block duration-150 py-2"
                       >
                         <span>{item.name}</span>
                       </a>

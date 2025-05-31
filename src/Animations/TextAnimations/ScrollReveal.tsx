@@ -12,7 +12,7 @@ interface ScrollRevealProps {
   baseRotation?: number;
   blurStrength?: number;
   containerClassName?: string;
-  textClassName?: string;
+  className?: string;
   rotationEnd?: string;
   charAnimationStart?: string;
   charAnimationEnd?: string;
@@ -22,11 +22,11 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   children,
   scrollContainerRef,
   enableBlur = false,
-  baseOpacity = 0.15,
+  baseOpacity = 0.2,
   baseRotation = 0,
   blurStrength = 0,
   containerClassName = "",
-  textClassName = "",
+  className = "",
   charAnimationStart = "top bottom-=15%",
   charAnimationEnd = "bottom top+=50%",
 }) => {
@@ -169,7 +169,7 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
 
   return (
     <div ref={containerRef} className={`${containerClassName}`}>
-      <p className={`${textClassName}`}>
+      <p className={`${className}`}>
         {splitText}{" "}
         {/* Now renders spans for words, containing spans for chars */}
       </p>
