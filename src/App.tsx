@@ -204,7 +204,7 @@ function App() {
           </div>
 
           {/* Section Timeline */}
-          <div className="min-h-svh mt-30 py-20 lg:py-10 px-4 lg:px-16 bg-black rounded-3xl mx-1 lg:mx-3">
+          <div id="journey" className="min-h-svh mt-30 py-20 lg:py-10 px-4 lg:px-16 bg-black rounded-3xl mx-1 lg:mx-3">
             <div className="max-w-7xl mx-auto">
               <div className="mb-16 text-center">
                 <h2 className="text-4xl lg:text-6xl font-bold text-white mb-4">

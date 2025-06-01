@@ -1,5 +1,7 @@
-// Updated ExpandableSections.tsx
+// Updated ExpandableSections.tsx dengan ScrollTrigger
 import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import "./../style.scss";
 
 export default function ExpandableSections() {
@@ -7,15 +9,27 @@ export default function ExpandableSections() {
   const elsRef = useRef<NodeListOf<Element> | null>(null);
 
   useEffect(() => {
+    // Register ScrollTrigger plugin
+    gsap.registerPlugin(ScrollTrigger);
+
     const $cont = contRef.current;
     if (!$cont) return;
 
     const $elsArr = $cont.querySelectorAll(".el");
     elsRef.current = $elsArr;
 
-    const timer = setTimeout(() => {
-      $cont.classList.remove("s--inactive");
-    }, 200);
+    // Buat ScrollTrigger untuk menghapus class s--inactive
+    ScrollTrigger.create({
+      trigger: $cont,
+      start: "top 75%", // Ketika bagian atas komponen mencapai 75% viewport
+      onEnter: () => {
+        gsap.delayedCall(0.5, () => {
+          $cont.classList.remove("s--inactive");
+        });
+      },
+      // Optional: bisa tambahkan once: true jika hanya ingin di-trigger sekali
+      once: true
+    });
 
     // Add click event to each element
     $elsArr.forEach(($el) => {
@@ -26,11 +40,12 @@ export default function ExpandableSections() {
     document.addEventListener("click", handleDocumentClick);
 
     return () => {
-      clearTimeout(timer);
       $elsArr.forEach(($el) => {
         $el.removeEventListener("click", handleElClick);
       });
       document.removeEventListener("click", handleDocumentClick);
+      // Bersihkan ScrollTrigger
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 

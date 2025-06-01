@@ -9,11 +9,11 @@ export const HeroHeader = () => {
   const [currentLang, setCurrentLang] = React.useState("en");
 
   const menuItems = [
+    { name: currentLang === "en" ? "Our Journey" : "Perjalanan Kami", href: "#journey" },
     { name: currentLang === "en" ? "Actions" : "Aksi", href: "#actions" },
     { name: currentLang === "en" ? "News" : "Berita", href: "#news" },
-    { name: currentLang === "en" ? "Our Team" : "Tim Kami", href: "#our-team" },
-    { name: currentLang === "en" ? "About" : "Tentang", href: "#about" },
     { name: currentLang === "en" ? "FAQ" : "FAQ", href: "#faq" },
+    { name: currentLang === "en" ? "Our Team" : "Tim Kami", href: "#our-team" },
   ];
 
   React.useEffect(() => {
@@ -63,29 +63,29 @@ export const HeroHeader = () => {
               </a>
               <div className="flex items-center gap-4 lg:hidden text-[#033009]">
                 <div
-                  className="relative w-20 h-10 rounded-full bg-gray-200 p-1 cursor-pointer transition-colors duration-300 flex items-center justify-between"
+                  className="relative w-16 h-8 rounded-full bg-gray-200 p-0.5 cursor-pointer transition-colors duration-300 flex items-center justify-between"
                   onClick={handleLangToggle}
                 >
                   <img
-                    src="https://flagcdn.com/w20/us.png"
+                    src="https://flagcdn.com/w160/us.png"
                     alt="English"
                     className={cn(
-                      "h-8 w-8 rounded-full object-cover transition-all duration-300",
+                      "h-6 w-6 rounded-full object-cover transition-all duration-300",
                       currentLang === "id" ? "opacity-50" : ""
                     )}
                   />
                   <img
-                    src="https://flagcdn.com/w20/id.png"
+                    src="https://flagcdn.com/w160/id.png"
                     alt="Indonesia"
                     className={cn(
-                      "h-8 w-8 rounded-full object-cover transition-all duration-300",
+                      "h-6 w-6 rounded-full object-cover transition-all duration-300",
                       currentLang === "en" ? "opacity-50" : ""
                     )}
                   />
                   <div
                     className={cn(
-                      "absolute top-1 h-8 w-8 rounded-full bg-white shadow-md transition-transform duration-300",
-                      currentLang === "en" ? "left-1" : "left-auto right-1"
+                      "absolute top-0.5 h-7 w-7 rounded-full bg-white shadow-md transition-transform duration-300",
+                      currentLang === "en" ? "left-0.5" : "left-auto right-0.5"
                     )}
                   />
                 </div>
@@ -160,7 +160,7 @@ export const HeroHeader = () => {
                     onClick={handleLangToggle}
                   >
                     <img
-                      src="https://flagcdn.com/w20/us.png"
+                      src="https://flagcdn.com/w160/us.png"
                       alt="English"
                       className={cn(
                         "h-8 w-8 rounded-full object-cover transition-all duration-300",
@@ -168,7 +168,7 @@ export const HeroHeader = () => {
                       )}
                     />
                     <img
-                      src="https://flagcdn.com/w20/id.png"
+                      src="https://flagcdn.com/w160/id.png"
                       alt="Indonesia"
                       className={cn(
                         "h-8 w-8 rounded-full object-cover transition-all duration-300",
