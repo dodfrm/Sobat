@@ -13,30 +13,9 @@ import ScrollReveal from "./Animations/TextAnimations/ScrollReveal";
 import LogoCloud from "./components/logo-cloud";
 import { Carousel, CarouselContent, CarouselItem } from "./components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import testimonials from "./data/teamData";
+import newsItems from "./data/newsData";
 
-const testimonials = [
-  {
-    quote:
-      "Orang Yang Suka Bermain Badminton dan Ingin Menjadi Programmer Handal Namun Enggan Ngoding",
-    name: "Dodi Firmansyah",
-    designation: "3SI1-222212572",
-    src: "./img/dodi.jpeg",
-  },
-  {
-    quote:
-    "Manis kayak gula, tapi nggak bikin diabetes Senyumku siap melelehkan hati yang beku~ Hai semuanya~ aku Wilfaa!",
-    name: "Wilfa Afriyani",
-    designation: "3SD1-222212915",
-    src: "./img/wilfa.jpeg",
-  },
-  {
-    quote:
-      "Lembut kayak awan, hangat kayak pelukan~ Halo, aku Titha!",
-    name: "Titha Nur Izzah",
-    designation: "3SI1-222212898",
-    src: "./img/titha.jpeg",
-  },
-];
 const dataTimeline = [
   {
     title: "2022",
@@ -127,6 +106,8 @@ const dataTimeline = [
     ),
   },
 ];
+
+
 function App() {
   
   return (
@@ -231,7 +212,7 @@ function App() {
                     src="/logo.svg"
                     className="lg:h-20 h-13 mb-2 lg:mb-4 inline"
                   />{" "}
-                  <span className="text-green-400">Journey</span>
+                  <span className="text-white">Journey</span>
                 </h2>
                 <p className="text-lg lg:text-xl text-gray-300 max-w-3xl mx-auto">
                   Tracing our path from humble beginnings to making a global
@@ -288,11 +269,11 @@ function App() {
           <LogoCloud />
 
           {/* Section News */}
-          <div id="news" className="h-svh lg:pt-19 pt-10 lg:px-5 px-1">
-            <div className="bg-black overflow-hidden relative rounded-2xl border border-black/10 lg:rounded-4xl h-[calc(100svh-90px)]">
+          <div id="news" className="lg:pt-19 pt-10 lg:px-5 px-1">
+            <div className="bg-black overflow-hidden relative rounded-2xl border border-black/10 lg:rounded-4xl">
               <div className="relative z-10 flex flex-col h-full px-4 pt-10 pb-20 lg:px-12 lg:pb-16">
                 <div className="text-center mb-10">
-                  <p className="mt-2 text-2xl lg:text-3xl text-balance text-white mx-auto font-bold">
+                  <p className="mt-2 text-2xl lg:text-3xl text-balance text-white mx-auto font-bolsemibold">
                     <TextReveal
                       startTrigger="top bottom"
                       endTrigger="bottom top"
@@ -301,108 +282,67 @@ function App() {
                     </TextReveal>
                   </p>
                 </div>
-                <AnimatedLine
-                  color="white"
-                  thickness={2}
-                  animationDuration={1.5}
-                  className="mb-10 mx-2"
-                />
+                <div>
+                  <AnimatedLine
+                    color="white"
+                    thickness={2}
+                    animationDuration={1.5}
+                    className="mb-10 mx-2"
+                  />
+                </div>
                 <Carousel
                   plugins={[
                     Autoplay({
                       delay: 5000,
+                      stopOnInteraction: false, // Lanjutkan autoplay setelah interaksi
                     }),
                   ]}
+                  opts={{
+                    loop: true, // Pastikan carousel berulang
+                  }}
                   className="w-full max-w-6xl mx-auto"
                 >
-                  <CarouselContent>
-                    <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                      <div className="p-4">
-                        <div className="bg-white rounded-xl overflow-hidden shadow-lg">
-                          <img
-                            src="/img/action-5.jpeg"
-                            alt="News 1"
-                            className="w-full h-48 object-cover"
-                          />
-                          <div className="p-4">
-                            <h3 className="text-xl font-bold text-black mb-2">
-                              Community Tree Planting Event
-                            </h3>
-                            <p className="text-gray-700">
-                              Join us this weekend as we plant 500 trees in the
-                              city park. Volunteers will receive free lunch and
-                              a commemorative t-shirt.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </CarouselItem>
-
-                    <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                      <div className="p-4">
-                        <div className="bg-white rounded-xl overflow-hidden shadow-lg">
-                          <img
-                            src="/img/action-2.jpeg"
-                            alt="News 2"
-                            className="w-full h-48 object-cover"
-                          />
-                          <div className="p-4">
-                            <h3 className="text-xl font-bold text-black mb-2">
-                              New Solar Initiative Launched
-                            </h3>
-                            <p className="text-gray-700">
-                              Our partnership with GreenEnergy Inc. will bring
-                              solar panels to 100 low-income households this
-                              year.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </CarouselItem>
-
-                    <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                      <div className="p-4">
-                        <div className="bg-white rounded-xl overflow-hidden shadow-lg">
-                          <img
-                            src="/img/action-3.jpeg"
-                            alt="News 3"
-                            className="w-full h-48 object-cover"
-                          />
-                          <div className="p-4">
-                            <h3 className="text-xl font-bold text-black mb-2">
-                              Annual Sustainability Report
-                            </h3>
-                            <p className="text-gray-700">
-                              Read our 2024 impact report showing a 35%
-                              reduction in community carbon footprint through
-                              our programs.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </CarouselItem>
-
-                    <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                      <div className="p-4">
-                        <div className="bg-white rounded-xl overflow-hidden shadow-lg">
-                          <img
-                            src="/img/action-4.jpeg"
-                            alt="News 4"
-                            className="w-full h-48 object-cover"
-                          />
-                          <div className="p-4">
-                            <h3 className="text-xl font-bold text-black mb-2">
-                              Youth Climate Summit
-                            </h3>
-                            <p className="text-gray-700">
-                              Registration is now open for our August summit
-                              where young leaders will discuss climate
-                              solutions.
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </CarouselItem>
+                  <CarouselContent className="-ml-4">
+                    {" "}
+                    {/* Sesuaikan margin negatif untuk carousel */}
+                    {newsItems.map((item, index) => (
+                      <CarouselItem
+                        key={index}
+                        className="pl-4 md:basis-1/2 lg:basis-1/3"
+                      >
+                        <a
+                          href={item.link}
+                          className="block hover:scale-105 transition-transform duration-300 group p-2"
+                        >
+                          {" "}
+                          {/* Sesuaikan padding jika perlu */}
+                          <figure className="overflow-hidden rounded-lg relative mb-1">
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="object-cover object-center aspect-video bg-gray-400"
+                            />
+                            <span className="absolute top-2 left-2 px-3 py-1 bg-gray-950/20 backdrop-blur-sm text-xs rounded-full text-gray-50">
+                              {item.category}
+                            </span>
+                          </figure>
+                          <time
+                            dateTime={new Date(item.date).toISOString()}
+                            className="text-sm text-gray-50/50"
+                          >
+                            {item.date}
+                            <span> ⦁ </span>
+                            {item.readTime}
+                          </time>
+                          <p className="text-2xl text-pretty mt-2 text-white">
+                            {item.title}
+                          </p>
+                          <p className="line-clamp-3 text-md text-gray-50 opacity-50 mt-1 group-hover:opacity-90 transition-opacity duration-300">
+                            {item.description}
+                          </p>
+                        </a>
+                      </CarouselItem>
+                    ))}
                   </CarouselContent>
                 </Carousel>
               </div>
