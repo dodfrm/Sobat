@@ -1,6 +1,10 @@
 # Sobat Bumi
 
-Blabblabla
+Website "Sobat Bumi" dibuat sebagai platform edukasi dan informasi mengenai isu-isu lingkungan dan keberlanjutan. Tujuan utama dari website ini adalah untuk meningkatkan kesadaran masyarakat tentang pentingnya menjaga kelestarian lingkungan melalui konten yang informatif dan interaktif
+
+## Tautan Website
+
+https://sobat-eta.vercel.app/
 
 ## Authors
  Tim Sobat
@@ -26,6 +30,14 @@ Install dependencies
 
 ```bash
   npm install
+
+  atau
+
+  npm install --legacy-peer-deps
+
+  atau
+
+  npm install --force
 ```
 
 Jalankan server
