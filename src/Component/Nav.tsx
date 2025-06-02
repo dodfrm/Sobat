@@ -6,14 +6,13 @@ import React from "react";
 export const HeroHeader = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
-  const [currentLang, setCurrentLang] = React.useState("en");
 
   const menuItems = [
-    { name: currentLang === "en" ? "Our Journey" : "Perjalanan Kami", href: "#journey" },
-    { name: currentLang === "en" ? "Actions" : "Aksi", href: "#actions" },
-    { name: currentLang === "en" ? "News" : "Berita", href: "#news" },
-    { name: currentLang === "en" ? "FAQ" : "FAQ", href: "#faq" },
-    { name: currentLang === "en" ? "Our Team" : "Tim Kami", href: "#our-team" },
+    { name: "Our Journey", href: "#journey" },
+    { name: "Actions", href: "#actions" },
+    { name: "News", href: "#news" },
+    { name: "FAQ", href: "#faq" },
+    { name: "Our Team", href: "#our-team" },
   ];
 
   React.useEffect(() => {
@@ -28,10 +27,6 @@ export const HeroHeader = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleLangToggle = () => {
-    setCurrentLang((prevLang) => (prevLang === "en" ? "id" : "en"));
-  };
-
   const handleMobileNavClick = (href: string) => {
     setIsOpen(false);
     setTimeout(() => {
@@ -41,6 +36,28 @@ export const HeroHeader = () => {
       }
     }, 100);
   };
+
+  const CustomJoinUsButton = () => (
+    <button
+      type="button"
+      // Apply transition for all properties that change on hover
+      className="flex justify-center gap-2 items-center mx-auto text-md bg-white text-black border-black border px-4 py-2 rounded-full group
+                 transition-colors duration-1000 ease-in-out hover:bg-black hover:text-white"
+    >
+      Join Us
+      <svg
+        className="w-8 h-8 justify-end ease-linear duration-300 rounded-full border border-black p-2 rotate-45
+                   group-hover:rotate-90 group-hover:bg-white group-hover:border-none" // Smoother SVG background change
+        viewBox="0 0 16 19"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
+          className="fill-black transition-colors duration-1000 ease-in-out group-hover:fill-black" // Path fill color transitions
+        />
+      </svg>
+    </button>
+  );
 
   return (
     <header>
@@ -62,34 +79,6 @@ export const HeroHeader = () => {
                 <img src="./logo.svg" alt="logo" className="h-12" />
               </a>
               <div className="flex items-center gap-4 lg:hidden text-[#033009]">
-                <div
-                  className="relative w-16 h-8 rounded-full bg-gray-200 p-0.5 cursor-pointer transition-colors duration-300 flex items-center justify-between"
-                  onClick={handleLangToggle}
-                >
-                  <img
-                    src="https://flagcdn.com/w160/us.png"
-                    alt="English"
-                    className={cn(
-                      "h-6 w-6 rounded-full object-cover transition-all duration-300",
-                      currentLang === "id" ? "opacity-50" : ""
-                    )}
-                  />
-                  <img
-                    src="https://flagcdn.com/w160/id.png"
-                    alt="Indonesia"
-                    className={cn(
-                      "h-6 w-6 rounded-full object-cover transition-all duration-300",
-                      currentLang === "en" ? "opacity-50" : ""
-                    )}
-                  />
-                  <div
-                    className={cn(
-                      "absolute top-0.5 h-7 w-7 rounded-full bg-white shadow-md transition-transform duration-300",
-                      currentLang === "en" ? "left-0.5" : "left-auto right-0.5"
-                    )}
-                  />
-                </div>
-
                 <label className="burger-3 block cursor-pointer lg:hidden">
                   <input
                     type="checkbox"
@@ -150,38 +139,19 @@ export const HeroHeader = () => {
                       </a>
                     </li>
                   ))}
+                  <li className="mt-8 flex justify-center">
+                    <a href="#join-us" onClick={() => setIsOpen(false)}>
+                      <CustomJoinUsButton />
+                    </a>
+                  </li>
                 </ul>
               </div>
 
               <div className="lg:flex items-center space-x-4 hidden">
                 <div className="lg:flex w-full items-center space-x-4 hidden">
-                  <div
-                    className="relative w-20 h-10 rounded-full bg-gray-200 p-1 cursor-pointer transition-colors duration-300 flex items-center justify-between"
-                    onClick={handleLangToggle}
-                  >
-                    <img
-                      src="https://flagcdn.com/w160/us.png"
-                      alt="English"
-                      className={cn(
-                        "h-8 w-8 rounded-full object-cover transition-all duration-300",
-                        currentLang === "id" ? "opacity-50" : ""
-                      )}
-                    />
-                    <img
-                      src="https://flagcdn.com/w160/id.png"
-                      alt="Indonesia"
-                      className={cn(
-                        "h-8 w-8 rounded-full object-cover transition-all duration-300",
-                        currentLang === "en" ? "opacity-50" : ""
-                      )}
-                    />
-                    <div
-                      className={cn(
-                        "absolute top-1 h-8 w-8 rounded-full bg-white shadow-md transition-transform duration-300",
-                        currentLang === "en" ? "left-1" : "left-auto right-1"
-                      )}
-                    />
-                  </div>
+                  <a href="#join-us">
+                    <CustomJoinUsButton />
+                  </a>
                 </div>
               </div>
             </div>

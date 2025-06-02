@@ -42,7 +42,7 @@ const AnimatedLine: React.FC<AnimatedLineProps> = ({
         trigger: line,
         start: startTrigger,
         end: endTrigger,
-        toggleActions: "play reverse play reverse",
+        toggleActions: "restart pause resume reverse",
         // markers: true, // Uncomment untuk debugging
       },
     });

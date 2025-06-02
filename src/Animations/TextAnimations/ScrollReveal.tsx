@@ -16,6 +16,8 @@ interface ScrollRevealProps {
   rotationEnd?: string;
   charAnimationStart?: string;
   charAnimationEnd?: string;
+  duration?: number; // New prop for controlling animation duration
+  staggerDuration?: number; // New prop for controlling stagger duration
 }
 
 const ScrollReveal: React.FC<ScrollRevealProps> = ({
@@ -24,40 +26,36 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
   enableBlur = false,
   baseOpacity = 0.2,
   baseRotation = 0,
-  blurStrength = 0,
+  blurStrength = 2,
   containerClassName = "",
   className = "",
   charAnimationStart = "top bottom-=15%",
   charAnimationEnd = "bottom top+=50%",
+  duration = 5, // Default duration in seconds
+  staggerDuration = 0.5, // Default stagger duration in seconds
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  // Now we'll store references to *all* individual character spans
   const allCharsRef = useRef<HTMLSpanElement[]>([]);
-  // We need a way to reset the index for character refs when re-rendering
   const charIndexCounter = useRef(0);
 
   const splitText = useMemo(() => {
     const text = typeof children === "string" ? children : "";
-    // Reset the character index counter for each render cycle
     charIndexCounter.current = 0;
 
-    // Split the text into words (and spaces)
     return text.split(/(\s+)/).map((word, wordIndex) => {
       if (word.match(/^\s+$/)) {
-        // If it's a space, just return a span for the space
         return <span key={`space-${wordIndex}`}>{word}</span>;
       } else {
-        // For each word, split it into characters
         return (
           <span
             key={`word-${wordIndex}`}
-            style={{ display: "inline-block", whiteSpace: "nowrap" }} // Ensure words stay together
+            style={{ display: "inline-block", whiteSpace: "nowrap" }}
           >
             {word.split("").map((char, charInWordIndex) => {
               const currentCharIndex = charIndexCounter.current++;
               return (
                 <span
-                  className="inline-block char" // Apply class to individual character spans
+                  className="inline-block char"
                   key={`char-${wordIndex}-${charInWordIndex}`}
                   ref={(el) => {
                     if (el) allCharsRef.current[currentCharIndex] = el;
@@ -77,46 +75,63 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     const el = containerRef.current;
     if (!el) return;
 
-    const scroller =
-      scrollContainerRef && scrollContainerRef.current
-        ? scrollContainerRef.current
-        : window;
-
+    const scroller = scrollContainerRef?.current || window;
     const cleanupTriggers: ScrollTrigger[] = [];
 
-    // Animasi Rotasi Kontainer (unchanged)
-    const rotationTl = gsap.fromTo(
+    // Animasi Rotasi Kontainer dengan durasi yang lebih smooth
+    const rotationTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: el,
+        scroller,
+        start: "top bottom",
+        end: "bottom center",
+        scrub: true,
+      },
+    });
+
+    rotationTl.fromTo(
       el,
       { transformOrigin: "0% 50%", rotate: baseRotation },
       {
-        ease: "none",
         rotate: 0,
-        scrollTrigger: {
-          trigger: el,
-          scroller,
-          start: "top bottom",
-          end: "bottom center",
-          scrub: true,
-        },
+        duration,
+        ease: "power2.out",
       }
     );
     cleanupTriggers.push(rotationTl.scrollTrigger!);
 
-    // Filter out any null/undefined elements from the `allCharsRef`
     const charElements = allCharsRef.current.filter(Boolean);
+    if (charElements.length === 0) return;
 
-    if (charElements.length === 0) {
-      return;
-    }
+    // Animasi Opacity dengan durasi dan easing yang lebih smooth
+    const opacityTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: el,
+        scroller,
+        start: charAnimationStart,
+        end: charAnimationEnd,
+        scrub: true,
+      },
+    });
 
-    // Animasi Opacity Karakter per Karakter
-    const opacityTl = gsap.fromTo(
+    opacityTl.fromTo(
       charElements,
       { opacity: baseOpacity, willChange: "opacity" },
       {
-        ease: "none",
         opacity: 1,
-        stagger: 1, // Adjusted stagger for character animation
+        duration,
+        ease: "sine.out",
+        stagger: {
+          each: staggerDuration,
+          from: "start", // Membuat animasi lebih organik
+        },
+      }
+    );
+    cleanupTriggers.push(opacityTl.scrollTrigger!);
+
+    // Animasi Blur dengan durasi yang disesuaikan
+    if (enableBlur) {
+      const blurTl = gsap.timeline({
         scrollTrigger: {
           trigger: el,
           scroller,
@@ -124,37 +139,28 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
           end: charAnimationEnd,
           scrub: true,
         },
-      }
-    );
-    cleanupTriggers.push(opacityTl.scrollTrigger!);
+      });
 
-    // Animasi Blur Karakter per Karakter (jika diaktifkan)
-    if (enableBlur) {
-      const blurTl = gsap.fromTo(
+      blurTl.fromTo(
         charElements,
         { filter: `blur(${blurStrength}px)` },
         {
-          ease: "none",
           filter: "blur(0px)",
-          stagger: 0.01, // Adjusted stagger for character animation
-          scrollTrigger: {
-            trigger: el,
-            scroller,
-            start: charAnimationStart,
-            end: charAnimationEnd,
-            scrub: true,
+          duration: duration * 0.8, // Sedikit lebih cepat dari opacity
+          ease: "sine.out",
+          stagger: {
+            each: staggerDuration * 0.5,
+            from: "start", // Membuat animasi lebih organik
           },
         }
       );
       cleanupTriggers.push(blurTl.scrollTrigger!);
     }
 
-    // Cleanup function for ScrollTrigger
     return () => {
       cleanupTriggers.forEach((trigger) => trigger.kill());
-      // Clear the ref array to prevent issues on re-renders
       allCharsRef.current = [];
-      charIndexCounter.current = 0; // Reset counter for next render
+      charIndexCounter.current = 0;
     };
   }, [
     scrollContainerRef,
@@ -164,15 +170,14 @@ const ScrollReveal: React.FC<ScrollRevealProps> = ({
     charAnimationStart,
     charAnimationEnd,
     blurStrength,
-    children, // Crucial dependency for `useMemo` and `useEffect`
+    children,
+    duration, // Tambahkan duration sebagai dependency
+    staggerDuration, // Tambahkan staggerDuration sebagai dependency
   ]);
 
   return (
     <div ref={containerRef} className={`${containerClassName}`}>
-      <p className={`${className}`}>
-        {splitText}{" "}
-        {/* Now renders spans for words, containing spans for chars */}
-      </p>
+      <p className={`${className}`}>{splitText}</p>
     </div>
   );
 };
