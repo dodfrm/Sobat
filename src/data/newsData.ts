@@ -12,7 +12,7 @@ const newsItems = [
   },
   {
     slug:"solar-initiative-launched",
-    image: "/img/action-3.jpeg",
+    image: "/img/solar.jpeg",
     category: "Energy",
     date: "10 Mar 2025",
     readTime: "6 min read",

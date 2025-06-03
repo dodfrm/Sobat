@@ -139,7 +139,7 @@ function App() {
                   <div className="max-w-lg lg:max-w-3xl text-white">
                     <h1 className="text-4xl text-balance lg:text-7xl font-bold leading-tight drop-shadow-md">
                       <TextReveal
-                        delay={0.5}
+                        delay={2}
                         duration={1}
                         startTrigger="top bottom"
                         endTrigger="bottom 20%"
@@ -149,7 +149,7 @@ function App() {
                     </h1>
                     <p className="mt-4 font-light text-xl lg:text-xl leading-tight italic drop-shadow-sm">
                       <TextReveal
-                        delay={0.5}
+                        delay={2}
                         duration={0.5}
                         startTrigger="top bottom"
                         endTrigger="bottom 20%"
