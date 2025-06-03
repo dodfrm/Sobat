@@ -40,8 +40,7 @@ export const HeroHeader = () => {
   const CustomJoinUsButton = () => (
     <button
       type="button"
-      // Apply transition for all properties that change on hover
-      className="flex justify-center gap-2 items-center mx-auto text-md bg-white text-black border-black border px-4 py-2 rounded-full group
+      className="flex justify-center gap-2 items-center mx-auto text-md bg-white text-black shadow-md px-4 py-2 rounded-full group
                  transition-colors duration-1000 ease-in-out hover:bg-black hover:text-white"
     >
       Join Us
@@ -106,7 +105,7 @@ export const HeroHeader = () => {
                   <li key={index}>
                     <a
                       href={item.href}
-                      className="text-black hover:text-accent-foreground block duration-150"
+                      className="text-black hover:text-gray-600 block duration-150"
                     >
                       <span>{item.name}</span>
                     </a>
@@ -117,7 +116,7 @@ export const HeroHeader = () => {
 
             <div
               className={cn(
-                "fixed inset-0 z-40 w-full bg-white text-[#033009] overflow-y-auto transition-all duration-300 lg:relative lg:inset-auto lg:top-auto lg:z-auto lg:h-auto lg:w-fit lg:bg-transparent lg:flex lg:items-center lg:justify-end lg:space-y-0 lg:rounded-none lg:border-0 lg:p-0 lg:shadow-none",
+                "fixed inset-0 z-40 w-full bg-white text-[#033009] overflow-y-visible transition-all duration-300 lg:relative lg:inset-auto lg:top-auto lg:z-auto lg:h-auto lg:w-fit lg:bg-transparent lg:flex lg:items-center lg:justify-end lg:space-y-0 lg:rounded-none lg:border-0 lg:p-0 lg:shadow-none",
                 isOpen
                   ? "translate-x-0 opacity-100"
                   : "translate-x-full opacity-0 pointer-events-none lg:translate-x-0 lg:opacity-100 lg:pointer-events-auto"
@@ -139,7 +138,7 @@ export const HeroHeader = () => {
                       </a>
                     </li>
                   ))}
-                  <li className="mt-8 flex justify-center">
+                  <li className="mt-8 flex justify-center text-2xl font-semibold">
                     <a href="#join-us" onClick={() => setIsOpen(false)}>
                       <CustomJoinUsButton />
                     </a>
@@ -147,12 +146,10 @@ export const HeroHeader = () => {
                 </ul>
               </div>
 
-              <div className="lg:flex items-center space-x-4 hidden">
-                <div className="lg:flex w-full items-center space-x-4 hidden">
-                  <a href="#join-us">
-                    <CustomJoinUsButton />
-                  </a>
-                </div>
+              <div className="lg:flex w-full items-center space-x-4 hidden">
+                <a href="#join-us">
+                  <CustomJoinUsButton />
+                </a>
               </div>
             </div>
           </div>

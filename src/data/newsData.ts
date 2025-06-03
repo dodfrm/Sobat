@@ -12,7 +12,7 @@ const newsItems = [
   },
   {
     slug:"solar-initiative-launched",
-    image: "/img/action-2.jpeg",
+    image: "/img/action-3.jpeg",
     category: "Energy",
     date: "10 Mar 2025",
     readTime: "6 min read",
@@ -23,7 +23,7 @@ const newsItems = [
   },
   {
     slug:"annual-sustainability-report",
-    image: "/img/action-3.jpeg",
+    image: "/img/data.jpeg",
     category: "Report",
     date: "25 Apr 2025",
     readTime: "3 min read",
@@ -34,7 +34,7 @@ const newsItems = [
   },
   {
     slug:"youth-climate-summit",
-    image: "/img/action-4.jpeg",
+    image: "/img/youth.jpg",
     category: "Education",
     date: "01 May 2025",
     readTime: "5 min read",
