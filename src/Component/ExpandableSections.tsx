@@ -110,7 +110,7 @@ export default function ExpandableSections() {
             </h2>
           </div>
           <div className="el__content flex flex-col items-center justify-center">
-            <div className="el__text capitalize text-shadow-xl text-2xl lg:text-4xl lg:px-12">
+            <div className="el__text capitalize text-shadow-lg text-2xl lg:text-4xl lg:px-12">
               {item.text}
             </div>
           </div>
