@@ -45,17 +45,24 @@
         /* Nonaktifkan interaksi mouse setelah fade out */
       }
     
-      /* HTML: <div class="loader"></div> */
+      @font-face {
+        font-family: 'Moonet';
+        src: url('./public/moonet-font/moonet.otf') format('opentype');
+        font-weight: normal; /* Sesuaikan jika font memiliki ketebalan lain */
+        font-style: normal; /* Sesuaikan jika font memiliki gaya lain (italic, dll) */
+        font-display: swap; /* Penting untuk performa loading font */
+      }
+      
       .loader {
         width: fit-content;
-        font-size: 40px;
-        font-family: system-ui, sans-serif;
+        font-size: 80px;
+        font-family: 'Moonet', sans-serif; /* Pastikan 'Moonet' adalah yang pertama */
         font-weight: bold;
         text-transform: uppercase;
-        color: #0000; /* This makes the text transparent so the background gradient shows through */
-        -webkit-text-stroke: 1px #e69f00; /* Changed stroke color to #e69f00 */
+        color: #0000;
+        -webkit-text-stroke: 1px #e69f00;
         background:
-          linear-gradient(90deg, #0000 33%, #e69f00 0 67%, #0000 0) /* Changed gradient fill color to #e69f00 */
+          linear-gradient(90deg, #0000 33%, #e69f00 0 67%, #0000 0)
           0 / 300% 100% no-repeat text;
         animation: l2 2s linear infinite;
       }
