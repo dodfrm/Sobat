@@ -12,7 +12,6 @@ createRoot(document.getElementById('root')!).render(
 if (initialLoadingScreen) {
   setTimeout(() => {
     initialLoadingScreen.classList.add("fade-out");
-    // Opsional: Hapus elemen dari DOM sepenuhnya setelah transisi selesai
     initialLoadingScreen.addEventListener(
       "transitionend",
       () => {
@@ -20,5 +19,5 @@ if (initialLoadingScreen) {
       },
       { once: true }
     ); // Hanya jalankan sekali
-  }, 1000); // Penundaan 100ms
+  }, 2000); 
 }
