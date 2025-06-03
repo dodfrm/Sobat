@@ -20,5 +20,5 @@ if (initialLoadingScreen) {
       },
       { once: true }
     ); // Hanya jalankan sekali
-  }, 100); // Penundaan 100ms
+  }, 1000); // Penundaan 100ms
 }

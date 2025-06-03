@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="/img/hero-video.mp4" as="video">
+  <link rel="preload" href="/moonet-font/moonet.otf" as="font" type="font/otf" crossorigin="anonymous" />
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     rel="stylesheet">
@@ -47,16 +48,16 @@
     
       @font-face {
         font-family: 'Moonet';
-        src: url('./public/moonet-font/moonet.otf') format('opentype');
-        font-weight: normal; /* Sesuaikan jika font memiliki ketebalan lain */
-        font-style: normal; /* Sesuaikan jika font memiliki gaya lain (italic, dll) */
-        font-display: swap; /* Penting untuk performa loading font */
+        src: url('/moonet-font/moonet.otf') format('opentype');
+        font-weight: normal; 
+        font-style: normal; 
+        font-display: swap; 
       }
       
       .loader {
         width: fit-content;
         font-size: 80px;
-        font-family: 'Moonet', sans-serif; /* Pastikan 'Moonet' adalah yang pertama */
+        font-family: 'Moonet';
         font-weight: bold;
         text-transform: uppercase;
         color: #0000;
