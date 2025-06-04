@@ -8,9 +8,9 @@ https://sobat-eta.vercel.app/
 
 ## Authors
  Tim Sobat
-- Dodi Firmansyah (3SI1)
-- Titha Nur Izzah (3SI1)
-- Wilfa Afriyani (3SD1)
+- Dodi Firmansyah (222212572) (3SI1)
+- Titha Nur Izzah (222212898)(3SI1)
+- Wilfa Afriyani (222212915) (3SD1)
 
 ## Instalasi Project
 
@@ -46,3 +46,7 @@ Jalankan server
   npm run dev
 ```
 Website akan berjalan pada http://localhost:5173
+
+## Screenshot Tampilan
+
+
