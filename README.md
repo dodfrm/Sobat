@@ -59,19 +59,20 @@ Website akan berjalan pada http://localhost:5173
 ![desktop](./ss/desktop%20(7).png)
 
 ### Tampilan Tablet
-![tablet](./ss/tablet%20(2).jpeg)
-![tablet](./ss/tablet%20(3).jpeg)
-![tablet](./ss/tablet%20(4).jpeg)
-![tablet](./ss/tablet%20(5).jpeg)
-![tablet](./ss/tablet%20(6).jpeg)
+<img src="./ss/tablet (2).jpeg" alt="tablet" width="450"/>
+<img src="./ss/tablet (3).jpeg" alt="tablet" width="450"/>
+<img src="./ss/tablet (4).jpeg" alt="tablet" width="450"/>
+<img src="./ss/tablet (5).jpeg" alt="tablet" width="450"/>
+<img src="./ss/tablet (6).jpeg" alt="tablet" width="450"/>
 
 ### Tampilan Mobile
-![mobile](./ss/mobile%20(1).jpeg)![mobile](./ss/mobile%20(2).jpeg)
-![mobile](./ss/mobile%20(3).jpeg)
-![mobile](./ss/mobile%20(4).jpeg)
-![mobile](./ss/mobile%20(5).jpeg)
-![mobile](./ss/mobile%20(6).jpeg)
-![mobile](./ss/mobile%20(7).jpeg)
-![mobile](./ss/mobile%20(8).jpeg)
+<img src="./ss/mobile (1).jpeg" alt="mobile" width="300"/>
+<img src="./ss/mobile (2).jpeg" alt="mobile" width="300"/>
+<img src="./ss/mobile (3).jpeg" alt="mobile" width="300"/>
+<img src="./ss/mobile (4).jpeg" alt="mobile" width="300"/>
+<img src="./ss/mobile (5).jpeg" alt="mobile" width="300"/>
+<img src="./ss/mobile (6).jpeg" alt="mobile" width="300"/>
+<img src="./ss/mobile (7).jpeg" alt="mobile" width="300"/>
+<img src="./ss/mobile (8).jpeg" alt="mobile" width="300"/>
 
 
