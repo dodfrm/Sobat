@@ -48,7 +48,31 @@ Jalankan server
 Website akan berjalan pada http://localhost:5173
 
 ## Screenshot Tampilan
-### Tampilan Mobile
 
+### Tampilan Desktop
+![desktop](./ss/desktop%20(1).png)
+![desktop](./ss/desktop%20(2).png)
+![desktop](./ss/desktop%20(3).png)
+![desktop](./ss/desktop%20(4).png)
+![desktop](./ss/desktop%20(5).png)
+![desktop](./ss/desktop%20(6).png)
+![desktop](./ss/desktop%20(7).png)
+
+### Tampilan Tablet
+![tablet](./ss/tablet%20(2).jpeg)
+![tablet](./ss/tablet%20(3).jpeg)
+![tablet](./ss/tablet%20(4).jpeg)
+![tablet](./ss/tablet%20(5).jpeg)
+![tablet](./ss/tablet%20(6).jpeg)
+
+### Tampilan Mobile
+![mobile](./ss/mobile%20(1).jpeg)
+![mobile](./ss/mobile%20(2).jpeg)
+![mobile](./ss/mobile%20(3).jpeg)
+![mobile](./ss/mobile%20(4).jpeg)
+![mobile](./ss/mobile%20(5).jpeg)
+![mobile](./ss/mobile%20(6).jpeg)
+![mobile](./ss/mobile%20(7).jpeg)
+![mobile](./ss/mobile%20(8).jpeg)
 
 
