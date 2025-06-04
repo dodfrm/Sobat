@@ -66,8 +66,7 @@ Website akan berjalan pada http://localhost:5173
 ![tablet](./ss/tablet%20(6).jpeg)
 
 ### Tampilan Mobile
-![mobile](./ss/mobile%20(1).jpeg)
-![mobile](./ss/mobile%20(2).jpeg)
+![mobile](./ss/mobile%20(1).jpeg)![mobile](./ss/mobile%20(2).jpeg)
 ![mobile](./ss/mobile%20(3).jpeg)
 ![mobile](./ss/mobile%20(4).jpeg)
 ![mobile](./ss/mobile%20(5).jpeg)
